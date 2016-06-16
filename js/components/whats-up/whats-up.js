@@ -1,7 +1,10 @@
 var WhatsUp = React.createClass({
         render: function() {
           return (
-            <p>What's up, Universe!</p>
+            <div>
+              <Greeting />
+              <p>What's up, HACKATHON!</p>
+            </div>
           )
         }
       });

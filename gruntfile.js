@@ -2,23 +2,8 @@
  * Let's do GRUNT!
  */
 module.exports = function(grunt) {
+    // INIT Grunt Thingy Majegy
     grunt.initConfig({
-        // Babel task to convert react from JSX to regular JS ...
-        // babel: {
-        //     options: {
-        //         plugins: ['transform-react-jsx'],
-        //         presets: ['es2015', 'react']
-        //     },
-        //     jsx: {
-        //         files: [{
-        //             expand: true,
-        //             cwd: 'scripts/',
-        //             src: ['*.js'],
-        //             dest: 'scripts/compiled/',
-        //             ext: '.js'
-        //         }]
-        //     }
-        // },
         // Concat all files into one file
         concat: {
             js: {
@@ -28,32 +13,42 @@ module.exports = function(grunt) {
         },
         // Clean the app.js file
         clean: ['js/app.js'],
-        // Uglify ... do I need to say more?
-        // uglify: {
-        //     options: {
-        //         mangle: false,
-        //     },
-        //     my_target: {
-        //         files: {
-        //             'scripts/app.min.js': ['scripts/app.js']
-        //         }
-        //     }
-        // },
+        // Watch the files
+        watch: {
+            options: {
+                spawn: false,
+                livereload: true
+            },
+            js: {
+                files: ['js/components/**/*.js'],
+                tasks: ['clean', 'concat'],
+            },
+            grunt: {
+                files: ['./gruntfile.js'],
+                tasks: ['watch']
+            },
+            index: {
+                files: ['./index.html'],
+                tasks: ['watch']
+            }
+        },
+        // Connect and serve the app
+        connect: {
+            server: {
+                options: {
+                    host: 'localhost',
+                    port: 3003,
+                    base: './',
+                    livereload: true
+                }
+            }
+        }
 
     });
-
-    // Load the required NPM Tasks
-    // grunt.loadNpmTasks('grunt-babel');
-    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    // grunt.loadNpmTasks('grunt-contrib-uglify');
-    // Register the Tasks
-    // Run Babel then Concat stuff
-    // grunt.registerTask('babel-it', ['babel', 'concat']);
-    // Just Concat stuff
-    // grunt.registerTask('concat-js', 'concat');
-    // Just Uglify stuff
-    // grunt.registerTask('uglify-js', 'uglify');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     // Default Grunt Task
-    grunt.registerTask('default', ['clean', 'concat']);
+    grunt.registerTask('serve', ['connect', 'watch']);
 };
