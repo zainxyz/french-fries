@@ -95,7 +95,7 @@ ReactDOM.render(
 var WhatsUp = React.createClass({
         render: function() {
           return (
-            <p>What's up, Universe!</p>
+            <p>{'What' + String.fromCharCode(183) + 's up, Universe!'}</p>
           )
         }
       });
