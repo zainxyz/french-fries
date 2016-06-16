@@ -92,15 +92,46 @@ ReactDOM.render(
   <PagesApp todos={new Pages()} />, document.getElementById('container')
 );
 
-var WhatsUp = React.createClass({
-        render: function() {
-          return (
-            <p>{'What' + String.fromCharCode(183) + 's up, Universe!'}</p>
-          )
-        }
-      });
+var NavButton = React.createClass({
+  render: function(){
+    return (
+      <button className={this.props.buttonName}>{this.props.buttonName}</button>
+    );
+  }
+});
 
-      ReactDOM.render(
-        <WhatsUp/>,
-        document.getElementById('hello_world')
-      );
+var NavBar = React.createClass({
+  render:function(){
+    var buttons = [];
+    this.props.buttons.forEach(function(key,value,obj){
+      buttons.push(<NavButton buttonName={key.buttonName} key={key.buttonName}/>);
+
+    });
+    return (
+      <div>{buttons}</div>
+    );
+  }
+});
+
+var WhatsUp = React.createClass({
+
+  render: function() {
+    return (
+    <div>
+      <p>{'What' + String.fromCharCode(146) + 's up, Universe!'}</p>
+      </div>
+    )
+  }
+});
+
+var buttonArray = [
+  {buttonName: 'Home'},
+  {buttonName: 'About'},
+  {buttonName: 'Zaaaaaaaain'},
+  ];
+
+ReactDOM.render(
+  <NavBar buttons={buttonArray}/>,
+  document.getElementById('hello_world')
+);
+
