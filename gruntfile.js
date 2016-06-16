@@ -20,9 +20,7 @@ module.exports = function(grunt) {
                 livereload: true
             },
             js: {
-                files: ['js/components/**/*.js',
-                        'js/components/*.js',
-                        './interface.js'],
+                files: ['js/components/**/*.js', 'js/components/interface.js'],
                 tasks: ['clean', 'concat'],
             },
             grunt: {
@@ -45,12 +43,12 @@ module.exports = function(grunt) {
                 }
             }
         }
-
     });
+    // Load in NPM Tasks
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
     // Default Grunt Task
-    grunt.registerTask('serve', ['connect', 'watch']);
+    grunt.registerTask('default', ['connect', 'watch']);
 };
