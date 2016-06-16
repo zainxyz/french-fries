@@ -47,12 +47,15 @@
  		"accounts" : "accounts"
  	},
  	household : function() {
+ 		console.log("We at the household.");
  		this.current = "household";
  	},
  	goals : function() {
+ 		console.log("We at the goals.");
  		this.current = "goals";
  	},
  	accounts : function() {
+ 		console.log("We at the accounts.");
  		this.current = "accounts";
  	}
  });

@@ -20,7 +20,9 @@ module.exports = function(grunt) {
                 livereload: true
             },
             js: {
-                files: ['js/components/**/*.js'],
+                files: ['js/components/**/*.js',
+                        'js/components/*.js',
+                        './interface.js'],
                 tasks: ['clean', 'concat'],
             },
             grunt: {
