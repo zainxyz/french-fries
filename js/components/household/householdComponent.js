@@ -2,8 +2,7 @@ var HouseholdComponent = React.createClass({
   render: function() {
     return (
       <div>
-      	<p>What's up, HouseholdComponenta!</p>
-      	<InfoCardComponent />
+      	<p>Whats up, HouseholdComponenta!</p>
       	<FilterableProductTable products={PRODUCTS} />
       </div>
       )

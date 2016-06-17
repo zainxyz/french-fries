@@ -6,7 +6,7 @@ var InfoCardHeader = React.createClass({
 			</header>
 		);
 	}
-);
+});
 
 var InfoCardMain = React.createClass({
 	render: function(){
@@ -20,7 +20,25 @@ var InfoCardMain = React.createClass({
 		);	
 
 	}
-);
+});
+
+var InfoCardTable = React.createClass({
+	render: function(){
+		return (
+			<table>
+				tabletownUSA
+			</table>	
+		);
+	}
+});
+
+var InfoCardNet = React.createClass({
+	render: function(){
+		return	(
+			<section>Net</section>
+		);
+	}
+});
 
 var InfoCardFooter = React.createClass({
 	render: function(){
@@ -30,7 +48,7 @@ var InfoCardFooter = React.createClass({
 		);
 
 	}
-);
+});
 
 var InfoCardComponent = React.createClass({
   render: function() {
@@ -40,11 +58,11 @@ var InfoCardComponent = React.createClass({
 	<InfoCardMain />
 	<InfoCardFooter />
       </section>
-      )
+      );
   }
-);
+});
 
 
 ReactDOM.render(
-	<InfoCardComponent />, document.getElementById('test');
+	<InfoCardComponent />, document.getElementById('test')
 );
