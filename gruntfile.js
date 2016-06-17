@@ -41,8 +41,8 @@ module.exports = function(grunt) {
                 livereload: true
             },
             js: {
-                files: ['js/components/**/*.js', 'js/components/interface.js'],
-                tasks: ['clean:js', 'concat']
+                files: ['js/**/*.js'],
+                tasks: ['clean:js', 'concat:js']
             },
             scss: {
                 files: ['css/**/*.scss'],
