@@ -2,12 +2,15 @@
  * Let's do GRUNT!
  */
 module.exports = function(grunt) {
+    'use strict';
+    // Set the livereload PORT
+    var livereloadPORT = 3003;
     // INIT Grunt Thingy Majegy
     grunt.initConfig({
         // Concat all files into one file
         concat: {
             js: {
-                src: 'js/components/**/*.js',
+                src: ['js/components/**/*.js', 'js/components/interface.js'],
                 dest: 'js/app.js'
             }
         },
@@ -21,7 +24,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['js/components/**/*.js', 'js/components/interface.js'],
-                tasks: ['clean', 'concat'],
+                tasks: ['clean', 'concat']
             },
             grunt: {
                 files: ['./gruntfile.js'],
@@ -37,9 +40,10 @@ module.exports = function(grunt) {
             server: {
                 options: {
                     host: 'localhost',
-                    port: 3003,
-                    base: './',
-                    livereload: true
+                    port: livereloadPORT,
+                    base: '.',
+                    livereload: true,
+                    open: true
                 }
             }
         }
@@ -51,4 +55,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     // Default Grunt Task
     grunt.registerTask('default', ['connect', 'watch']);
+    // grunt.registerTask('default', 'watch');
 };
