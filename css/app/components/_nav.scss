@@ -3,7 +3,7 @@
 // -- the main nav container //
 ///////////////////////////////
 .app-nav {
-	margin-top: 5rem;
+	margin: 5rem 0 2rem 0;
     @include grid-row($width: true, $justify: center);
     > .navbar {
         @include grid-row($width: true);
@@ -62,7 +62,7 @@ $nav-button-map: (
         'shadow': none
     ),
     'font-style': (
-        // 'size': 2rem,
+        'size': 1.4rem,
         'weight': unmap($font-weights, bold),
         'transform': uppercase,
         'style': normal,
