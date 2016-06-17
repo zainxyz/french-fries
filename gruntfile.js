@@ -16,10 +16,23 @@ module.exports = function(grunt) {
         },
         // Clean the app.js file
         clean: {
-           build: ['js/app.js'],
+           appJS: ['js/app.js'],
+           cssSASS: ['css/styles/default.css', 'css/styles/default.css.map'],
            options: {
                force: true
            }
+        },
+        // Compile SASS file
+        sass: {
+            dist: {
+                options: {
+                    style: 'expanded',
+                    trace: true
+                },
+                files: {
+                    'css/styles/default.css': 'css/themes/theme-default.scss'
+                }
+            }
         },
         // Watch the files
         watch: {
@@ -29,7 +42,11 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['js/components/**/*.js', 'js/components/interface.js'],
-                tasks: ['clean', 'concat']
+                tasks: ['clean:appJS', 'concat']
+            },
+            scss: {
+                files: ['css/**/*.scss'],
+                tasks: ['clean:cssSASS', 'sass']
             },
             grunt: {
                 files: ['./gruntfile.js'],
@@ -57,6 +74,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     // Default Grunt Task
     grunt.registerTask('default', ['connect', 'watch']);
