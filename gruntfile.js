@@ -16,11 +16,11 @@ module.exports = function(grunt) {
         },
         // Clean the app.js file
         clean: {
-           appJS: ['js/app.js'],
-           cssSASS: ['css/styles/default.css', 'css/styles/default.css.map'],
-           options: {
-               force: true
-           }
+            js: ['js/app.js'],
+            sass: ['css/styles/default.css', 'css/styles/default.css.map'],
+            options: {
+                force: true
+            }
         },
         // Compile SASS file
         sass: {
@@ -42,11 +42,11 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['js/components/**/*.js', 'js/components/interface.js'],
-                tasks: ['clean:appJS', 'concat']
+                tasks: ['clean:js', 'concat']
             },
             scss: {
                 files: ['css/**/*.scss'],
-                tasks: ['clean:cssSASS', 'sass']
+                tasks: ['clean:sass', 'sass']
             },
             grunt: {
                 files: ['./gruntfile.js'],
@@ -76,7 +76,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     // Default Grunt Task
-    grunt.registerTask('default', ['connect', 'watch']);
+    grunt.registerTask('default', ['connect', 'clean:js', 'concat:js', 'watch']);
     // grunt.registerTask('default', 'watch');
 };
