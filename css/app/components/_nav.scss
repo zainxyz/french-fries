@@ -1,0 +1,85 @@
+///////////////////////////////
+// App NAV                   //
+// -- the main nav container //
+///////////////////////////////
+.app-nav {
+	margin-top: 5rem;
+    @include grid-row($width: true, $justify: center);
+    > .navbar {
+        @include grid-row($width: true);
+        @include grid-columns($sizes: (12, 12, 9, 8));
+        > a.logo {
+            @include grid-columns($sizes: (12, 12, 4, 3));
+        }
+        > .nav {
+            @include grid-row($justify: flex-end);
+            @include grid-columns($sizes: (12, 12, 7, 8));
+        }
+    }
+}
+
+$nav-logo-font-map: (
+	'color': $fries-color-secondary,
+    'size': 2rem,
+    'weight': normal,
+    'transform': none,
+    'style': normal,
+    'decoration': none,
+    'family': unmap($font-families, secondary),
+    'line-height': 1.2
+);
+
+.app-nav {
+	a.logo {
+		@include gen-font-style-map($nav-logo-font-map);
+		cursor: pointer;
+	}
+}
+
+$nav-button-map: (
+    'color' :(
+        'border': (
+            'default':transparent,
+            'hover':transparent,
+            'active':transparent
+        ),
+        'background': (
+            'default':transparent,
+            'hover':rgba($fries-color-black, .1),
+            'active':rgba($fries-color-black, .15)
+        ),
+        'text': (
+            'default':$fries-color-black,
+            'hover':$fries-color-black,
+            'active':$fries-color-black
+        )
+    ),
+    'box-model': (
+        'padding': unmap($spacings, large),
+        'margin': 0,
+        'border': none,
+        'border-radius': 0,
+        'shadow': none
+    ),
+    'font-style': (
+        // 'size': 2rem,
+        'weight': unmap($font-weights, bold),
+        'transform': uppercase,
+        'style': normal,
+        'decoration': none,
+        'family': 'Source Sans Pro',
+        'line-height': 1.2
+    )
+);
+
+.app-nav {
+    .nav {
+        li {
+            > a {
+                cursor: pointer;
+                display: block;
+                @include gen-button($nav-button-map);
+            }
+        }
+    }
+}

@@ -1,0 +1,186 @@
+/**
+ *  ASI (Advisor Software Inc.) Fries Modular Design System
+ *      Description : Design Tokens - Default Theme
+ *  Current Version : 1.2
+ *  Version Updated : 20th April 2016
+ */
+
+// 
+// Define the base font size
+// --- setting to 62.5% of the browser's font size, usually resets the
+//     rem to px ratio, so that 1rem = 10px
+// 
+// @type Var
+$base-font-size: 62.5% !default;
+// 
+// A Global SASS Map defining the default application colors.
+// 
+// @type Map
+$app-colors: (
+	'brand': (
+		'primary': #0aefef,
+		'secondary': #00aaad,
+		'tertiary': #00ad8e,
+		'quaternary': #1589ee,
+		'dark': #1a1b1f,
+		// 'light': #efefef,
+		'light': #e3e4e5,
+		'neutral': #C9C9C9,
+		'info': #469EE0,
+		'success': #4EAE7B,
+		'warning': #FBB03B,
+		'error': #E94359
+	),
+	'base': (
+		'color-1': #FFF,    // $color-core-primary
+		'color-2': #C9C9C9, // $color-core-secondary
+		'color-3': #EDEDED, // $color-core-tertiary         || $fill
+		'color-4': #D6D6D6, // $color-core-tertiary-hover   || $darkfill
+		'color-5': #CCC,    // $color-core-tertiary-active
+		'color-6': #F2F2F2, // $color-core-tertiary-visited
+		'color-7': #1A1B1F, // $color-core-quaternary
+		'color-8': #33353D, // $color-core-quaternary-hover
+		'color-9': #F3F2F4  // $color-core-quinary
+	)
+);
+// 
+// A global sass map defining the default media breakpoints.
+//
+// @type Map
+$breakpoints: (
+	'mobile': min-width 0,
+	'mobile-only': max-width 640px,
+	'tablet': min-width 769px,
+	'tablet-portrait': min-width 641px max-width 768px,
+	'tablet-landscape': min-width 769px,
+	'tablet-only': min-width 641px max-width 1024px,
+	'laptop': min-width 1025px,
+	'laptop-only': min-width 1025px max-width 1440px,
+	'desktop': min-width 1441px,
+	'desktop-only': min-width 1441px max-width 1920px,
+	'wqhd': min-width 1921px
+);
+// 
+// A global sass map defining the default spacing options.
+//
+// @type Map
+$spacings: (
+	'xx-small': .25rem,
+	'x-small': .5rem,
+	'small': .75rem,
+	'medium': 1rem,
+	'large': 1.5rem,
+	'x-large': 1.7rem,
+	'xx-large': 2rem
+);
+// 
+// A global sass map defining the default box-shadow options.
+//
+// @type Map
+$box-shadows: (
+	'small': 0 2px 1px 1px,
+	'medium': 0 3px 2px 2px,
+	'large': 0 2px 6px 2px,
+	'x-large': 0 5px 6px 2px
+);
+// 
+// A global sass map defining the default border-width options.
+//
+// @type Map
+$border-widths: (
+	'x-small': 1px,
+	'small': 1.5px,
+	'medium': 3px,
+	'large': 5px,
+	'x-large': 7.5px
+);
+// 
+// A global sass map defining the default border-radius options.
+//
+// @type Map
+$border-radii: (
+	'x-small': .125rem,
+	'small': .3rem,
+	'medium': .5rem,
+	'large': .75rem,
+	'x-large': 1rem,
+	'xx-large': 1.5rem,
+	'circle': 50%
+);
+// 
+// A global sass map defining the default font-families options.
+//
+// @type Map
+$font-families: (
+	'icon': 'icomoon',
+	'primary': 'Source Sans Pro',
+	'secondary': 'Raleway'
+);
+// 
+// Base Font Size
+$font-base: 62.5%;
+// 
+// A global sass map defining the default font-sizes options.
+//
+// @type Map
+$font-sizes: (
+	'xx-small': .875rem,
+	'x-small': 1rem,
+	'small': 1.25rem,
+	'regular': 1.4rem,
+	'large': 1.5rem,
+	'x-large': 1.6rem,
+	'xx-large': 2rem
+);
+// 
+// A global sass map defining the default font-weight options.
+//
+// @type Map
+$font-weights: (
+	'thin': 100,
+	'x-light': 200,
+	'light': 300,
+	'normal': 400,
+	'medium': 500,
+	's-bold': 600,
+	'bold': 700,
+	'x-bold': 800,
+	'u-bold': 900
+);
+// 
+// A global sass map defining the default line-height options.
+// 
+// @todo Vini's still thinking to do something...
+//
+// @type Map
+$line-heights: (
+	'regular': 1,
+	'normal': 1.2,
+	'medium': 1.25,
+	'large': 1.375,
+	'x-large': 2.125rem,
+	'xx-large': 3rem
+);
+// 
+// APP COLORS
+// 
+$fries-color-primary: unmap($app-colors, brand, primary);
+$fries-color-secondary: unmap($app-colors, brand, secondary);
+$fries-color-tertiary: unmap($app-colors, brand, tertiary);
+$fries-color-quaternary: unmap($app-colors, brand, quaternary);
+// $fries-color-background-nav: $fries-color-primary;
+$fries-color-background-body: rgba(243, 242, 244, 1); // #f3f2f4
+$fries-color-background-page-desc: rgba(247, 247, 247, 1); // #f7f7f7
+$fries-color-background-nav: rgba(49, 73, 84, 1); // #314954
+$fries-color-info: $fries-color-secondary;
+$fries-color-success: $fries-color-secondary;
+$fries-color-error: unmap($app-colors, brand, error);
+$fries-color-warning: unmap($app-colors, brand, warning);
+$fries-color-black: unmap($app-colors, brand, dark);
+$fries-color-light: unmap($app-colors, brand, light);
+// 
+// Anchor Colors
+// 
+$anchor-color: $fries-color-primary;
+$anchor-color-hover: lighten($anchor-color, 5);
+$anchor-color-active: darken($anchor-color, 5);

@@ -1,0 +1,13 @@
+///////////
+// Fonts //
+///////////
+///
+$font-primary-map: ('path': '../muse/assets/fonts', 'font-name': 'Source Sans Pro', 'file-name': 'SourceSansPro', 'weights': ( (ExtraLight, 200), (Light, 300), (Regular, 400), (Semibold, 600), (Bold, 700), ('Black', 900)));
+$font-secondary-map: ('path': '../muse/assets/fonts', 'font-name': 'Raleway', 'file-name': 'Raleway', 'weights': ( (Light, 300), (Regular, 400)));
+$font-icon-map: ('path': '../muse/assets/fonts', 'font-name': 'icomoon', 'file-name': 'icomoon');
+// 
+// Generate Stuff!
+// 
+@include gen-font-face($font-primary-map);
+@include gen-font-face($font-secondary-map);
+@include gen-font-face($font-icon-map);
