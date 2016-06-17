@@ -23,6 +23,9 @@
  		this.props.router.off("route", this.callback);
  	},
  	render : function() {
+		if (this.props.router.current == "dashboard"){
+			return <DashboardComponent />;
+		}
  		if (this.props.router.current == "household") {
  			return <HouseholdComponent />;
  		}

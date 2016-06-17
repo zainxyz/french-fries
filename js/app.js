@@ -10,6 +10,51 @@ var AccountsComponent = React.createClass({
 
 
 // dashboard component
+var DashboardComponent = React.createClass({
+	render: function(){
+		return (
+			<InfoCards cardData={CARD_DATA}/>, document.getElementById('test')
+		);
+}
+});
+
+
+var CARD_DATA = [{
+	title: 'Assets',
+	tableValues: [
+		{label: 'label 1', value: 'value 1'},
+		{label: 'label 2', value: 'value 2'},
+		{label: 'label 3', value: 'value 3'},
+		{label: 'label 4', value: 'value 4'},
+		{label: 'label 5', value: 'value 5'}
+	],
+	netValue: '$123,456.78',
+	footerText: 'Whatever, man.'
+},{
+	title: 'Assets',
+	tableValues: [
+		{label: 'label 1', value: 'value 1'},
+		{label: 'label 2', value: 'value 2'},
+		{label: 'label 3', value: 'value 3'},
+		{label: 'label 4', value: 'value 4'},
+		{label: 'label 5', value: 'value 5'}
+	],
+	netValue: '$123,456.78',
+	footerText: 'Whatever, man.'
+},{
+	title: 'Assets',
+	tableValues: [
+		{label: 'label 1', value: 'value 1'},
+		{label: 'label 2', value: 'value 2'},
+		{label: 'label 3', value: 'value 3'},
+		{label: 'label 4', value: 'value 4'},
+		{label: 'label 5', value: 'value 5'}
+	],
+	netValue: '$123,456.78',
+	footerText: 'Whatever, man.'
+}];
+
+
 
 // nothing
 
@@ -60,11 +105,14 @@ var InfoCardHeader = React.createClass({
 
 var InfoCardMain = React.createClass({
 	render: function(){
+		console.log("InfoCardMain", this.props);
 		return (
 			<main>
 				<InfoCardTable
+					rowsData = {this.props.infoCardMainData.tableValues}
 				/>				
 				<InfoCardNet
+					netData = {this.props.infoCardMainData.netValue}
 				/>	
 			</main>
 		);	
@@ -74,18 +122,38 @@ var InfoCardMain = React.createClass({
 
 var InfoCardTable = React.createClass({
 	render: function(){
+		console.log("InfoCardTable", this.props);
+		var rows = [];
+		var dumbIncrementer = 0;
+		// fix the key that is passed inside this forEach...also why the shit is that not built into ReactJS
+		this.props.rowsData.forEach(function(data){
+			rows.push(<InfoCardTableRow label={data.label} key={dumbIncrementer}/>);
+		++dumbIncrementer;
+		});
 		return (
 			<table>
-				tabletownUSA
+				<tbody>{rows}</tbody>
 			</table>	
 		);
 	}
 });
 
+var InfoCardTableRow = React.createClass({
+	render: function() {
+    return (
+      <tr>
+        <td>{this.props.label}</td>
+        <td>{this.props.value}</td>
+      </tr>
+    );
+  }
+});
+
 var InfoCardNet = React.createClass({
 	render: function(){
+		console.log("InfoCardNet",this.props.netData);
 		return	(
-			<section>Net</section>
+			<section>{this.props.netData}</section>
 		);
 	}
 });
@@ -100,21 +168,74 @@ var InfoCardFooter = React.createClass({
 	}
 });
 
+
 var InfoCardComponent = React.createClass({
   render: function() {
-    return (
+  	console.log("max");
+    return (	
       <section>
-	<InfoCardHeader />
-	<InfoCardMain />
-	<InfoCardFooter />
+		<InfoCardHeader 
+			infoCardTitle = {this.props.cardData.title}
+		/>
+		<InfoCardMain 
+			infoCardMainData = {this.props.cardData}
+		/>
+		<InfoCardFooter 
+			infoCardFooter = {this.props.cardData.footerText}
+		/>
       </section>
       );
   }
 });
 
 
+var InfoCards = React.createClass({
+	render: function(){
+		var cardDOM = [];
+		console.log(this);
+
+		this.props.cardData.forEach(function(key){
+			cardDOM.push(<InfoCardComponent cardData={key} key={key}/>);
+			
+		});
+		console.log("cardDom",cardDOM);
+		return (
+			<div>{cardDOM}</div>
+		);
+	}
+})
+
+
+var CARD_DATA = [{
+	title: 'Assets',
+	tableValues: [
+	  {label: 'label 1', value: 'value 1'},
+	  {label: 'label 2', value: 'value 2'},
+	  {label: 'label 3', value: 'value 3'},
+	],
+	netValue : '$203,500.00',
+	footerText : 'What I Own'
+},{
+	title: 'Liabilities',
+	tableValues: [
+	  {label: 'CC', value: 'value 1'},
+	  {label: 'label 2', value: 'value 2'},
+	  {label: 'label 3', value: 'value 3'},
+	],
+	netValue : '$203,500.00',
+	footerText : 'What I Owe'
+}
+]
+
+var TABLE_VALUES = [
+  {label: 'label 1', value: 'value 1'},
+  {label: 'label 2', value: 'value 2'},
+  {label: 'label 3', value: 'value 3'},
+];
+
+
 ReactDOM.render(
-	<InfoCardComponent />, document.getElementById('test')
+	<InfoCards cardData={CARD_DATA}/>, document.getElementById('test')
 );
 
 /**
@@ -142,6 +263,9 @@ ReactDOM.render(
  		this.props.router.off("route", this.callback);
  	},
  	render : function() {
+		if (this.props.router.current == "dashboard"){
+			return <DashboardComponent />;
+		}
  		if (this.props.router.current == "household") {
  			return <HouseholdComponent />;
  		}
