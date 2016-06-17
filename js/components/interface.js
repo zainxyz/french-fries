@@ -2,18 +2,14 @@
  * @jsx React.DOM
  * https://medium.com/react-tutorials/react-backbone-router-c00be0cf1592#.795v2jm84
  */
- 
- var FooComponent = React.createClass({
- 	render : function() {
- 		return <div>foo</div>;
- 	}
- });
- 
- var BarComponent = React.createClass({
- 	render : function() {
- 		return <div>bar</div>;
- 	}
- });
+
+/**
+* For communication between two components that don't have a parent-child relationship,
+* you can set up your own global event system. 
+* Subscribe to events in componentDidMount(), 
+* unsubscribe in componentWillUnmount(), and 
+* call setState() when you receive an event. 
+*/
  
  var InterfaceComponent = React.createClass({
  	componentWillMount : function() {
