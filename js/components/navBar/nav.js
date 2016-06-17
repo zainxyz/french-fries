@@ -37,5 +37,5 @@ var buttonArray = [
 
 ReactDOM.render(
   <NavBar buttons={buttonArray}/>,
-  document.getElementById('nav_bar')
+  document.getElementById('app_nav')
 );
