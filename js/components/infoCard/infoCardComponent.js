@@ -1,34 +1,50 @@
-var infoCardComponent = React.createClass({
+var InfoCardHeader = React.createClass({
+	render: function(){
+		return (
+			<header>
+				<h1>Header</h1>
+			</header>
+		);
+	}
+);
+
+var InfoCardMain = React.createClass({
+	render: function(){
+		return (
+			<main>
+				<InfoCardTable
+				/>				
+				<InfoCardNet
+				/>	
+			</main>
+		);	
+
+	}
+);
+
+var InfoCardFooter = React.createClass({
+	render: function(){
+		return (
+			<footer>This is a foot.
+			</footer>
+		);
+
+	}
+);
+
+var InfoCardComponent = React.createClass({
   render: function() {
     return (
       <section>
-      	<header>
-      		<h1> Title</h1>
-      	</header>
-      	<main>
-      		<table>
-      			<tr>
-      				<td>Bla</td>
-      				<td>Ble</td>
-      			</tr>
-      		</table>
-      		<net>
-      			Net Goes here
-      		</net>
-      	</main>
-      	<footer>
-      		<p>Text</p>
-      	</footer>
+	<InfoCardHeader />
+	<InfoCardMain />
+	<InfoCardFooter />
       </section>
       )
   }
-});
+);
 
-// var PRODUCTS = [
-//   {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
-//   {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
-//   {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
-//   {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
-//   {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
-//   {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
-// ];
+
+ReactDOM.render(
+	<InfoCardComponent />, document.getElementById('test');
+);
