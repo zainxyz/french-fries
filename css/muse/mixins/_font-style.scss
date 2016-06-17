@@ -1,0 +1,71 @@
+// @charset "UTF-8";
+/// Generate a list of `font-styles`
+/// 
+/// @param {Map} $ff
+///   The font style map, which looks something like so:
+///      $build-font-style: (
+///      	 'color': red,
+///          'size': 2rem,
+///          'weight': normal,
+///          'transform': none,
+///          'style': normal,
+///          'decoration': none,
+///          'family': 'Source Sans Pro',
+///          'line-height': 1.2
+///      );
+/// 
+/// @example SCSS - Usage
+///   .my-font-style {
+///     @include load-font-face($source-sans-pro);
+///   }
+/// 
+/// @example css - CSS Output
+///   .my-font-style {
+///     color: red;
+///     font-family: "Source Sans Pro";
+///     font-size: 2rem;
+///     font-weight: normal;
+///     font-style: normal;
+///     text-decoration: none;
+///     text-transform: none;
+///     line-height: 1.2;
+///   }
+/// 
+/// @require map-get
+/// 
+/// 
+/// 
+/// 
+/// 
+@mixin gen-font-styles($ff) { 
+  color: map-get($ff, 'color');
+  font-family: map-get($ff, 'family');
+  font-size: map-get($ff, 'size');
+  font-weight: map-get($ff, 'weight');
+  font-style: map-get($ff, 'style');
+  text-decoration: map-get($ff, 'decoration');
+  text-transform: map-get($ff, 'transform');
+  line-height: map-get($ff, 'line-height');
+}
+
+@mixin gen-font-style-map($ff) {
+    color: map-get($ff, 'color');
+    font-family: map-get($ff, 'family');
+    font-size: map-get($ff, 'size');
+    font-weight: map-get($ff, 'weight');
+    font-style: map-get($ff, 'style');
+    text-decoration: map-get($ff, 'decoration');
+    text-transform: map-get($ff, 'transform');
+    line-height: map-get($ff, 'line-height');
+}
+
+@mixin gen-font-style($color: null, $family: null, $size: null, $weight: null, $style: null, $decoration: null, $transform: null, $line-height: null) {
+    color: $color;
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+    font-style: $style;
+    text-decoration: $decoration;
+    text-transform: $transform;
+    line-height: $line-height;
+}

@@ -1,0 +1,95 @@
+// @charset "UTF-8";
+/// Generate styles for various types of buttons.
+/// 
+/// 
+/// $map: (
+///     'color' :(
+///         'border': (
+///             'default':red,
+///             'hover':blue,
+///             'active':purple,
+///             'inactive':yellow
+///         ),
+///         'background': (
+///             'default':red,
+///             'hover':blue,
+///             'active':purple,
+///             'inactive':yellow
+///         ),
+///         'text': (
+///             'default':red,
+///             'hover':blue,
+///             'active':purple,
+///             'inactive':yellow
+///         )
+///     ),
+///     'box-model': (
+///         'padding': 0,
+///         'margin': 0,
+///         'border': none,
+///         'border-radius': 0,
+///         'shadow': none
+///     ),
+///     'font-style': (
+///         'size': 2rem,
+///         'weight': normal,
+///         'transform': none,
+///         'style': normal,
+///         'decoration': none,
+///         'family': 'Source Sans Pro',
+///         'line-height': 1.2
+///     )
+/// );
+// 
+// 
+// 
+// 
+//
+@mixin gen-button($map) {
+    @include gen-box-model-map(unmap($map, box-model));
+    @include gen-font-style-map(unmap($map, font-style));
+    @include transition(background-color .3s $ease-in-out-quad, color .3s $ease-in-out-quad, border-color .3s $ease-in-out-quad, opacity .3s $ease-in-out-quad);
+    @include user-select(none);
+    @include appearance(none);
+    opacity: 1;
+    outline: none;
+    cursor: pointer;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid transparent;
+    border-color: unmap($map, color, border, default);
+    background-color: unmap($map, color, background, default);
+    color: unmap($map, color, text, default);
+    &:hover, &:focus, &:active {
+        outline: none;
+    }
+    &:hover {
+        background-color: unmap($map, color, background, hover);
+        color: unmap($map, color, text, hover);
+        border-color: unmap($map, color, border, hover);
+    }
+    &:active {
+        background-color: unmap($map, color, background, active);
+        color: unmap($map, color, text, active);
+        border-color: unmap($map, color, border, active);
+    }
+    &.inactive {
+        opacity: .25;
+        cursor: default;
+        pointer-events: none;
+        @if map-has-keys($map, inactive) {
+            background-color: unmap($map, color, background, inactive);
+            color: unmap($map, color, text, inactive);
+            border-color: unmap($map, color, border, inactive);
+        }
+    }
+}
+
+// 1. Have a custom button mixin.
+// -- It takes in a SASS Map
+// 2. Create as many freakin' SASS Map's you want per application.
+// 3. Build a one line mixin per application per button
+// 3. Build a one line CLASS per application per button
+// 4. USE IT

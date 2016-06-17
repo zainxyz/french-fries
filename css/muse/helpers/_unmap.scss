@@ -1,0 +1,36 @@
+// @charset "UTF-8";
+/// Provides a quick method for unmapping a `key` from a SASS `map`.
+/// OR
+/// Provides a quick method for unmapping a `key` from a - NESTED - SASS `map`.
+/// 
+/// ^^^^^ It's So COOL that its 2-IN-1 :) ^^^^^
+/// 
+/// Let's test if a given SASS Map has all the `$keys`
+/// @param {Map} $map - A Map..duh!
+/// @param {Arglist} $keys - Keys to test!
+/// @return {Bool}
+/// 
+@function map-has-keys($map, $keys...) {
+    @each $key in $keys {
+        @if not map-has-key($map, $key) {
+            @return false;
+        }
+    }
+    @return true;
+}
+
+/// 
+/// Let's fetch the nested `$keys...` from a given SASS Map
+/// @param {Map} $map - A Map..duh!
+/// @param {Arglist} $keys - Keys to fetch!
+/// @return {*}
+/// 
+@function unmap($map, $keys...) {
+    @each $key in $keys {
+        @if map-has-keys($map, $key) {
+            $map: map-get($map, $key);
+        }
+    }
+    @return $map;
+}
+

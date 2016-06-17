@@ -1,0 +1,130 @@
+// @charset "UTF-8";
+/// Temporary File to be removed at a later point
+/// --- just so CLEAN UP is easier
+/// 
+@mixin borderStyle($width, $style, $color, $radius:0){
+  box-sizing:border-box;
+  border-width: $width;
+  border-style: $style;
+  border-color: $color;
+  border-radius: $radius;
+}
+//Layout Border Style
+@mixin asi-border($position:all, $style:solid, $width:0.1rem) {
+    @if ($position=='all') {
+        border-style: $style;
+        border-width: $width;
+    }
+    @else {
+        border-#{$position}-style: $style;
+        border-#{$position}-width: $width;
+    }
+}
+// datagrid 
+// Tables horizontal and vertical default styles
+// typography
+%table-header-title {
+    // @include fontStyle(1.3rem, $font-s-bold, uppercase);
+    font-size: 1.3rem;
+    font-weight: unmap($font-weights, s-bold);
+    text-transform: uppercase;
+}
+
+%table-header-icon {
+    // color: $color-brand-primary;
+    color: unmap($app-colors, brand, primary);
+    outline: 0;
+    // @include fontStyle(1rem, $font-family: 'icomoon');
+    font-size: 1rem;
+    font-family: unmap($font-families, icon);
+}
+
+%table-body-value {
+    // @include fontStyle(1.4rem, $font-normal);
+    font-size: 1.4rem;
+    font-weight: unmap($font-weights, normal);
+}
+
+%table-body-value-clickable {
+    // color: $color-brand-primary;
+    color: unmap($app-colors, brand, primary);
+    // @include fontStyle(1.6rem, bold);
+    font-size: 1.6rem;
+    font-weight: unmap($font-weights, bold);
+}
+
+%table-vertical-header-title {
+    // @include fontStyle(1.4rem, $font-normal);
+    font-size: 1.4rem;
+    font-weight: unmap($font-weights, normal);
+}
+
+%table-vertical-subheader-title {
+    // @include fontStyle(1.2rem, $font-normal);
+    font-size: 1.2rem;
+    font-weight: unmap($font-weights, normal);
+}
+
+%table-vertical-title {
+    // @include fontStyle(1.4rem, $font-normal);
+    font-size: 1.4rem;
+    font-weight: unmap($font-weights, normal);
+}
+
+%table-vertical-value {
+    // @include fontStyle(1.4rem, $font-normal);
+    font-size: 1.4rem;
+    font-weight: unmap($font-weights, normal);
+}
+@mixin datagrid-vertical {
+    .tds0, .tds3, .tds4 {
+        @include display(flex !important);
+    }
+
+    .tds2, .tds4, .tds5, .tds6 {
+        @include display(flex !important);
+    }
+    display: block;
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+        width: 100%;
+    }
+    > thead {
+        display: none;
+    }
+    tr {
+        @include display(flex);
+        @include flex-direction(row);
+        @include flex-wrap(wrap);
+        position: relative;
+        &:hover,
+        &:nth-child(even) {
+            background: none !important;
+        }
+    }
+    td {
+        @include display(flex);
+        @include justify-content(space-between);
+        @include align-items(center);
+        &:before {
+            display: inline-block;
+            white-space: nowrap;
+        }
+    }
+}
+
+%datagrid-vertical {
+    @include media(unmap($breakpoints, mobile-only)) {
+        @include datagrid-vertical;
+    }
+    @include media(unmap($breakpoints, tablet-only)) {
+        .closed & {
+            @include datagrid-vertical;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+// @charset "UTF-8";
+/// Generate styles for various types of box-model.
+///     
+///         
+// @mixin box-model($wrap:null) {
+//     @if type-of($wrap)==map {
+//         @each $prop, $val in $wrap {
+//             #{$prop}: $val;
+//         }
+//     }
+// }
+// null
+@mixin gen-box-model($padding: null, $margin: null, $bg: null, $border: null, $border-radius: null, $shadow: null) {
+    padding: $padding;
+    margin: $margin;
+    background: $bg;
+    border: $border;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+}
+
+@mixin gen-box-model-map($map) {
+    padding: map-get($map, 'padding');
+    margin: map-get($map, 'margin');
+    background: map-get($map, 'background');
+    border: map-get($map, 'border');
+    border-radius: map-get($map, 'border-radius');
+    box-shadow: map-get($map, 'shadow');
+}
+

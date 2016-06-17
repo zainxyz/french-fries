@@ -1,0 +1,40 @@
+// Breakpoints
+
+$breakpoints: (
+	mobile: 641px,
+	tablet: 768px,
+	laptop: 1025px,
+	desktop: 1441px,
+	whqd: 1921px
+);
+
+// $val: blue, red, yellow;
+@for $i from 1 through length($breakpoints) {
+  $#{$breakpoint}: new-breakpoint($value);
+}
+
+
+
+// @each $breakpoint, $value in $breakpoints {
+// 	//$media-#{$breakpoint}: new-breakpoint($value) !default;
+// 	$#{$breakpoint}: $value;
+// }
+
+// .zain{
+// 	width: $mobile;
+// }
+
+
+
+// $media-tablet: new-breakpoint($media-breakpoint-x-small) !default;
+// $media-laptop: new-breakpoint($media-breakpoint-medium) !default;
+// $media-desktop: new-breakpoint($media-breakpoint-large) !default;
+// $media-wqhd: new-breakpoint($media-breakpoint-x-large) !default;
+
+
+
+// $media-mobile-only: new-breakpoint(max-width $media-breakpoint-x-small) !default;
+// $media-tablet-only: new-breakpoint(min-width $media-breakpoint-x-small max-width $media-breakpoint-medium) !default;
+// $media-laptop-only: new-breakpoint(min-width $media-breakpoint-medium max-width $media-breakpoint-large) !default;
+// $media-desktop-only: new-breakpoint(min-width $media-breakpoint-large max-width $media-breakpoint-x-large) !default;
+// $media-wqhd-only: new-breakpoint(min-width $media-breakpoint-x-large) !default;

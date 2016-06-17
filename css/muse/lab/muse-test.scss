@@ -1,0 +1,211 @@
+///////////////////////////////////////////////////////////
+// ASI (Advisor Software, Inc.)                          //
+// M.U.S.E (Monkey, Unicorn, Snake, Elephant)            //
+// Description : Modular UI / UX Special Edition...      //
+//               A lightweight SASS library for building //
+//               robust and light applications.          //
+//               ---                                     //
+//               Testing the M.U.S.E Library             //
+//               Testing the M.U.S.E Library             //
+//               Testing the M.U.S.E Library             //
+// Version     : 2.0                                     //
+// Updated     : 12th April 2016                         //
+// Copyright 2015-2016 Advisor Software, Inc.            //
+///////////////////////////////////////////////////////////
+//
+// Import the M.U.S.E
+@import "../muse";
+
+/**
+ * TESTERS
+ *  - base-colors
+ *  - brand-colors
+ *  - get-padding
+ *  - get-margin
+ *  - box-shadow
+ *  - border-width
+ *  - border-radius
+ *  - font-family
+ *  - font-size
+ *  - font-weight
+ *  - breakpoint
+ *  - gen-font-face
+ *  - gen-font-style
+ *  - grid-row
+ *  - grid-columns
+ *  - grid-omega
+ *  - justify-content
+ *  - box-model
+ */
+
+.tester-dude {
+    // base-colors
+    // color: unmap($app-colors, 'base', 'color-9');
+    // brand-colors
+    color: unmap($app-colors, 'brand', 'primary');
+    // get-padding
+    padding: unmap($spacings, 'x-large');
+    // get-margin
+    margin-bottom: unmap($spacings, 'medium');
+    // border-width
+    border: unmap($border-widths, 'x-large') solid blue;
+    // border-radius
+    border-radius: unmap($border-radii, 'circle');
+    // font-family
+    font-family: unmap($font-families, 'secondary');
+    // font-size
+    font-size: unmap($font-sizes, 'regular');
+    // font-weight
+    font-weight: unmap($font-weights, 'x-bold');
+    // breakpoint
+    @include media(unmap($breakpoints, 'tablet')) {
+        color: unmap($app-colors, 'brand', 'error');
+    }
+}
+
+// gen-font-face
+$source-sans-pro: (
+    'path': '../core/assets/commons/fonts',
+    'font-name': 'Source Sans Pro',
+    'file-name': 'SourceSansPro',
+    'weights': (
+        (ExtraLight, 200),
+        (Light, 300),
+        (Regular, 400),
+        (Semibold, 600),
+        (Bold, 700),
+        (Black, 900)
+    )
+);
+@include gen-font-face($source-sans-pro);
+
+// gen-font-style
+$my-font-style: (
+    'color': red,
+    'size': 2rem,
+    'weight': normal,
+    'transform': none,
+    'style': normal,
+    'decoration': none,
+    'family': 'Source Sans Pro',
+    'line-height': 1.2
+);
+.my-font-style {
+    @include gen-font-style-map($my-font-style);
+}
+
+// grid-row
+.grid-row {
+    @include grid-row($display: flex);
+}
+// grid-columns
+.grid-columns {
+    @include grid-columns($sizes: (3, 4, 5, 6));
+}
+.grid-columns-1 {
+    @include grid-columns($display: block, $sizes: (3));
+}
+// grid-omega
+.grid-omega {
+    @include grid-omega();
+}
+// justify-content
+.justify-content {
+    @include justify-content(space-between);
+}
+
+// box-model
+$wrap-padding: unmap($spacings, 'xx-large');
+$wrap-margin: 0 0 unmap($spacings, 'x-large') 0;
+$wrap-bg: #FFF;
+$wrap-shadow: 0 2px 1px 1px solid red;
+.wrapper {
+    @include gen-box-model($wrap-padding, $wrap-margin, $wrap-bg, none, none $wrap-shadow);
+}
+.b0x-m0dAl {
+    @include gen-box-model($wrap-padding, $wrap-margin);
+}
+
+// generate icons
+$gen-icons: (
+    'trash-can': e919,
+    'risk': e916,
+    'pencil': e925,
+    'x': e92d,
+    'arrow-up': e91b,
+    'arrow-right': e91d,
+    'arrow-down': e921,
+    'arrow-left': e91a
+);
+$vini: (
+    'vini': e91b
+);
+
+// @include gen-icons($gen-icons);
+$gen-icons: map-merge($gen-icons, $vini);
+@include gen-icons($gen-icons);
+
+// generate a button
+$button-map: (
+    'color' :(
+        'border': (
+            'default':red,
+            'hover':yellow,
+            'active':purple
+            // 'inactive':black
+        ),
+        'background': (
+            'default':yellow,
+            'hover':red,
+            'active':purple
+            // 'inactive':black
+        ),
+        'text': (
+            'default':black,
+            'hover':white,
+            'active':white
+            // 'inactive':white
+        )
+    ),
+    'box-model': (
+        'padding': 2rem 3rem,
+        'margin': 2rem,
+        'border': 1px,
+        'border-radius': 3rem,
+        'shadow': none
+    ),
+    'font-style': (
+        'size': 2rem,
+        'weight': normal,
+        'transform': uppercase,
+        'style': normal,
+        'decoration': none,
+        'family': 'Source Sans Pro',
+        'line-height': 1.2
+    )
+);
+.awesome-button {
+    @include gen-button($button-map);
+}
+
+// checkbox
+$checkbox-map: (
+    'size': 3rem,
+    'border': (
+        'default': blue,
+        'active': red,
+    ),
+    'border-radius': .3rem,
+    'check-color': red
+
+);
+span.checkbox {
+    @include gen-input-checkbox($checkbox-map);
+}
+
+.font-style-test {
+    @include gen-font-style($size: 1.4rem, $weight: unmap($font-weights, s-bold), $transform: uppercase);
+    @include media(unmap($breakpoints, laptop)) {
+        @include gen-font-style($size: 1.4rem);
+    }
+}

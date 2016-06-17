@@ -1,0 +1,151 @@
+/**
+ *  This mixin generate a collection of font-style with each items from $fontsList per responsive state from $breakpoints
+ *
+ *  The $fontsList list signature is:
+ *  
+ *  $font-styles-list-name:(
+ *      ('label1', scale-index, weight, text-transform),
+ *      ('label1', scale-index, weight, text-transform),
+ *      ...
+ *      ('label1', scale-index, weight, text-transform)
+ *  )
+ * 
+ *  $fonts-styles-list: (
+ *      ('display3', 3, 400),
+ *      ('display2', 2, 400),
+ *      ('display1', 1, 400),
+ *      ('headline', 2, 400),
+ *      ('title', 1, 400),
+ *      ('subheading', 1, 400),
+ *      ('body2', 1, 400),
+ *      ('body1', 1, 700),
+ *      ('caption', 1, 400),
+ *      ('button', 1, 700)
+ *  );
+ *  $fonts-list-breakpoints: ( 
+ *      (map-get($breakpoints, 'mobile'), 4, orange), 
+ *      (map-get($breakpoints, 'tablet'), 3, blue), 
+ *      (map-get($breakpoints, 'laptop'), 2, purple), 
+ *      (map-get($breakpoints, 'desktop'), 1, green)
+ *  );
+ */
+
+@mixin gen-typography($collection, $breakpoints, $ms-base, $ms-scale){
+  @each $item in $collection{
+    %#{nth($item, 1)},
+    .#{nth($item, 1)}{
+      @include gen-font-styles(nth($item, 3)); 
+      $i : 0;
+      @for $break from 1 through length($breakpoints) {
+        $i : $i + 1;
+        @if $break==1 {                    
+          font-size: modular-scale(nth(nth($item,2), $i), $ms-base, $ms-scale);
+        }
+        @else {
+          @include media(nth(nth($breakpoints, $break), 2)) {
+            font-size: modular-scale(nth(nth($item,2), $i), $ms-base, $ms-scale);
+          }
+        }
+      }
+    }
+  }
+}
+
+// @mixin gen-typo-original($fontsList: null, $breakpoints: null, $scale: null, $base: null) {
+//     @each $font in $fontsList {
+//         %#{nth($font, 1)},
+//         .#{nth($font, 1)} {
+//             font-weight: nth($font, 3);
+//             text-transform: nth($font, 4);
+//             @for $breaks from 1 through length($breakpoints) {
+//                 @if $breaks==1 {                    
+//                     font-size: modular-scale(nth($font, 2), $base * nth(nth($breakpoints, $breaks), 2), $scale);
+//                     color: nth(nth($breakpoints, $breaks), 3);
+//                 }
+//                 @else {
+//                     @include media(nth(nth($breakpoints, $breaks), 1)) {
+//                         font-size: modular-scale(nth($font, 2), $base * nth(nth($breakpoints, $breaks), 2), $scale);
+//                         color: nth(nth($breakpoints, $breaks), 3);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// @mixin gen-typo-map($fontsMap: null, $breakpoints: null, $scale: null, $base: null) {
+//     @for $breaks from 1 through length($breakpoints) {
+//         @if $breaks==1 {
+//             @each $font, $style in $fontsMap {
+//                 .#{$font} {
+//                     @include gen-font-style-map(unmap($style, font-style));
+//                     font-size: modular-scale(unmap($style, scale-index), $base * nth(nth($breakpoints, $breaks), 2), $scale);
+//                 }
+//             }
+//         }
+//         @else {
+//             @include media(nth(nth($breakpoints, $breaks), 1)) {
+//                 @each $font, $style in $fontsMap {
+//                     .#{$font} {
+//                         font-size: modular-scale(unmap($style, scale-index), $base * nth(nth($breakpoints, $breaks), 2), $scale);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+@mixin gen-typo-list($fontsList: null, $breakpoints: null, $scale: null, $base: null) {
+    @for $breaks from 1 through length($breakpoints) {
+        @if $breaks==1 {
+            @each $font in $fontsList {
+                .#{nth($font, 1)} {
+                    @include gen-font-style-map(nth($font, 3));
+                    font-size: modular-scale(nth($font, 2), $base * nth(nth($breakpoints, $breaks), 2), $scale);
+                }
+            }
+        }
+        @else {
+            @include media(nth(nth($breakpoints, $breaks), 1)) {
+                @each $font in $fontsList {
+                    .#{nth($font, 1)} {
+                        font-size: modular-scale(nth($font, 2), $base * nth(nth($breakpoints, $breaks), 2), $scale);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*
+// Responsive Typography Collection (RTC - Per Application)
+
+.body-1{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.body-2{
+    font-size: 12px;
+    font-weight: normal;
+}
+
+    %paceholder, 
+    .class{
+        // font styles;
+        // ms(index); 
+        @include media(responsive-state-1){
+            // ms(index); 
+        } 
+        @include media(responsive-state-2){
+            // ms(index); 
+        }     
+    }
+
+
+
+
+ */
+
+
+// }

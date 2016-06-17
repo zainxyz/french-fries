@@ -1,0 +1,14 @@
+@charset "UTF-8";
+/// Generate `icons` per class basis
+/// 
+// $gen-icons: (
+// 	'trash-can': 919,
+// 	'risk': 916
+// );
+@mixin gen-icons($icons) {
+	@each $key, $val in $icons {
+		.ico-#{$key}:before {
+			content: unquote("\"") + unquote(str-insert(#{$val},"\\",1)) + unquote("\"");
+		}
+	}
+}

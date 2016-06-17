@@ -1,0 +1,61 @@
+//////////////////////////////////////
+// Overwriting the SASS long mixins //
+// -- these are compact and 'CUTE'  //
+//////////////////////////////////////
+///////////////////
+// Parent Mixins //
+///////////////////
+@mixin display($display) {
+    display: $display;
+}
+
+@mixin flex-direction($direction) {
+    flex-direction: $direction;
+}
+
+@mixin flex-wrap($wrap) {
+    flex-wrap: $wrap;
+}
+
+@mixin flex-flow($flow) {
+    flex-flow: $flow;
+}
+
+@mixin justify-content($justify) {
+    justify-content: $justify;
+}
+
+@mixin align-items($align) {
+    align-items: $align;
+}
+
+@mixin align-content($align) {
+    align-content: $align;
+}
+
+/////////////////////
+// Children Mixins //
+/////////////////////
+@mixin order($order) {
+    order: $order;
+}
+
+@mixin flex-grow($grow) {
+    flex-grow: $grow;
+}
+
+@mixin flex-shrink($shrink) {
+    flex-shrink: $shrink;
+}
+
+@mixin flex-basis($basis) {
+    flex-basis: $basis;
+}
+
+@mixin flex($flex) {
+    flex: $flex;
+}
+
+@mixin align-self($align) {
+    align-self: $align;
+}

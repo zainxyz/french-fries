@@ -1,0 +1,148 @@
+///////////////////////////////////////////////////////////////////////////////////////////
+// CUSTOM GRID Variables                                                                 //
+// -- define the variables used throught out the custom-grid                             //
+// ----                                                                                  //
+// @var {[$custom-grid-columns]}   : How many columns should there be in the grid?       //
+// @var {[$custom-grid-gutter]}    : How big should each column's gutter space be?       //
+// @var {[$custom-grid-class-row]} : The string used for the 'row' class in the grid!    //
+// @var {[$custom-grid-class-col]} : The string used for the 'column' class in the grid! //
+// @var {[$custom-grid-class-off]} : The string used for the 'offset' class in the grid! //
+// ----                                                                                  //
+///////////////////////////////////////////////////////////////////////////////////////////
+$custom-grid-columns: 12 !default;
+// $custom-grid-gutter: 1.17875% !default;
+$custom-grid-gutter: 1.5% !default;
+// $custom-grid-gutter: 2.35765% !default;
+$custom-grid-class-row: 'grid-row' !default;
+$custom-grid-class-col: 'grid-col' !default;
+$custom-grid-class-off: 'grid-off' !default;
+//////////////////////////////////////////////////////////////
+// A global sass map defining the default grid-breakpoints. //
+//                                                          //
+// @type Map                                                //
+//                                                          //
+// @require $breakpoints                                    //
+// @require map-get                                         //
+//////////////////////////////////////////////////////////////
+$grid-breakpoints: (
+    unmap($breakpoints, 'mobile'),
+    unmap($breakpoints, 'tablet'),
+    unmap($breakpoints, 'laptop'),
+    unmap($breakpoints, 'desktop')
+) !default;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+// grid-col-size [calculate the column size based on the final custom-grid column count]                 //
+// @param  {[integer]}              $columnCount  [the # of columns you require out of the $maxColCount] //
+// @param  {[integer]}              $maxColCount  [the max # of columns in your grid]                    //
+// @param  {[percentage / integer]} $columnGutter [the gutter / space between each column]               //
+// @return {[percentage]}                         [percentage based on the function calculations]        //
+//                                                defaults to 12 12 1%                                   //
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------------------------------- //
+////////////////////////////////////////////////////////////////
+// Explanation -                                              //
+// -- Size of 1 Column : Get the [gutter] * [maxColCount - 1] //
+//                       Subtract ^ that value from 100       //
+//                       Then Divide it by the [maxColCount]  //
+// -- Size of N Column : Multiply [1 column size] by N        //
+//                       Multiply [N - 1] by [gutter]         //
+//                       Add ^ those two numbers up           //
+////////////////////////////////////////////////////////////////
+@function grid-col-size($colCount: 12, $maxColCount: 12, $gutter: 1%) {
+    @if $colCount==$maxColCount {
+        @return 100%;
+    }
+    @else {
+        // @return $colCount / $maxColCount * 100% - $gutter;
+        // @return (((100 - ($gutter * ($maxColCount - 1))) / $maxColCount) * $colCount) + ($gutter * ($colCount - 1));
+        $oneColumnSize: (100 - ($gutter * ($maxColCount - 1))) / $maxColCount;
+        $nColumnSize: ($oneColumnSize * $colCount) + ($gutter * ($colCount - 1));
+        @return $nColumnSize;
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// gridColumns [generate grid-column sizing, with or without media-queries, based on the given $sizes]              //
+// @param  {[SASS List]} $sizes    [A Sass list containing number of columns]                                       //
+// @param  {[display]}   $display  [The CSS display property (defaults to 'flex')]                                  //
+// @param  {[integer]}   $columns  [the # of flexbox columns (defaults to $custom-grid-columns)]                    //
+// @param  {[integer]}   $gutter   [the gutter space between the flexbox columns (defaults to $custom-grid-gutter)] //
+// @return {[something]}           [it returns something, based on the inputs given]                                //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+@mixin grid-columns($help: false, $sizes: (12), $display: flex, $columns: $custom-grid-columns, $gutter: $custom-grid-gutter) {
+    // help: true
+    //   if you need help understanding the mixin
+    @if $help {
+        @debug '/**\a* gridColumns [generate grid-column sizing, with or without media-queries, based on the given $sizes]\a* @param  {[SASS List]} $sizes    [A Sass list containing number of columns]\a* @param  {[display]}   $display  [The CSS display property (defaults to flex)]\a* @param  {[integer]}   $columns  [the # of flexbox columns (defaults to $custom-grid-columns)]\a* @param  {[integer]}   $gutter   [the gutter space between the flexbox columns (defaults to $custom-grid-gutter)]\a* @return {[something]}           [it returns something, based on the inputs given]\a*/';
+    }
+    // let's build the grid coluns!
+    @for $num from 1 through length($sizes) {
+        @if (nth($sizes, $num)==0) {}
+        @else {
+            @if $num==1 {
+                @if $display==flex {
+                    flex-basis: grid-col-size(nth($sizes, $num), $columns, $gutter);
+                    max-width: grid-col-size(nth($sizes, $num), $columns, $gutter);
+                }
+                @else if $display==none {
+                    width: grid-col-size(nth($sizes, $num), $columns, $gutter);
+                }
+                @else {
+                    display: $display;
+                    float: left;
+                    width: grid-col-size(nth($sizes, $num), $columns, $gutter);
+                    margin-right: $gutter;
+                }
+            }
+            @else {
+                @include media(nth($grid-breakpoints, $num)) {
+                    @if $display==flex {
+                        flex-basis: grid-col-size(nth($sizes, $num), $columns, $gutter);
+                        max-width: grid-col-size(nth($sizes, $num), $columns, $gutter);
+                    }
+                    @else if $display==none {
+                        width: grid-col-size(nth($sizes, $num), $columns, $gutter);
+                    }
+                    @else {
+                        // display: $display;
+                        // float: left;
+                        width: grid-col-size(nth($sizes, $num), $columns, $gutter);
+                        // margin-right: $gutter;
+                    }
+                }
+            }
+        }
+    }
+}
+
+///////////////////////////////////////////////////////////////
+// grid-omega [remove the right-margin of any given element] //
+///////////////////////////////////////////////////////////////
+@mixin grid-omega {
+    margin-right: 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// grid-row [generate a row based on the $display property]                                                           //
+// @param  {[property]} $display       [css-property - display]                                                       //
+// @param  {[property]} $justify       [flexbox-property - justify-content]                                           //
+// @param  {[property]} $align         [flexbox-property - align-items]                                               //
+// @param  {[property]} $direction     [flexbox-property - flex-direction]                                            //
+// @param  {[property]} $wrap          [flexbox-property - flex-wrap]                                                 //
+// @return {[flexbox-row-properties]}  [width + display + justify-content + align-items + flex-direction + flex-wrap] //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+@mixin grid-row($width: true, $display: flex, $justify: space-between, $align: center, $direction: row, $wrap: wrap) {
+    @if $width==true {
+        width: 100%;
+    }
+    @if $display==flex {
+        display: flex;
+        justify-content: $justify;
+        align-items: $align;
+        flex-direction: $direction;
+        flex-wrap: $wrap;
+    }
+    @else {
+        display: $display;
+    }
+}

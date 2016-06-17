@@ -1,0 +1,77 @@
+// @charset "UTF-8";
+/// Generate styles for various types of inputs.
+/// 
+/// ++++++++
+/// Checkbox
+/// ++++++++
+/// --- Anmiated Checkbox
+/// 
+/// <span class="checkbox">
+///     <input type="checkbox" id="checkbox_1" />
+///     <label for="checkbox_1"></label>
+/// </span>
+/// 
+/// $checkbox-map: (
+///     'size': 3rem,
+///     'border': (
+///         'default': blue,
+///         'active': red,
+///     ),
+///     'border-radius': .3rem,
+///     'check-color': red
+/// );
+/// 
+/// @require unmap
+/// 
+@mixin gen-input-checkbox($map) {
+    // define variables
+    // $em-base: 14px;
+    $size: unmap($map, size);
+    $label-size: $size * .9;
+    // $label-size: $size * .6;
+    $check-width: $size * .55;
+    // $check-width: $size * .3666667;
+    $check-height: $size * .35;
+    // $check-height: $size * .2333333;
+    $label-before-top: $size * .4;
+    // $label-before-top: $size * .2666667;
+    $label-before-left: $size * .1;
+    // $label-before-left: $size * .0666667;
+    // start mixin
+    @include size($size);
+    position: relative;
+    > input[type='checkbox'] {
+        visibility: hidden;
+    }
+    > label {
+        @include size($label-size);
+        border: 1px solid rgba(unmap($map, border, default), .5);
+        border-radius: unmap($map, border-radius);
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        &:before {
+            @include size(0);
+            @include transform(rotate(-45deg));
+            @include transform-origin(left top);
+            opacity: 0;
+            content: '';
+            position: absolute;
+            border: 3px solid unmap($map, check-color);
+            border-top: none;
+            border-right: none;
+            top: $label-before-top;
+            left: $label-before-left;
+        }
+    }
+    > input[type="checkbox"]:checked + label {
+        border-color: unmap($map, border, active);
+        &:before {
+            opacity: 1;
+            @include size($check-width $check-height);
+            @include transition(opacity .25s linear, height .2s linear, width .2s linear .2s);
+        }
+    }
+}
+

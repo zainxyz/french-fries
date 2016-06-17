@@ -1,0 +1,61 @@
+// @charset "UTF-8";
+/// Generate a list of `@font-face` using the font-face mixin from our vendor, Bourbon
+/// 
+/// @param {Map} $ff
+///   The font map, which looks something like so:
+///     $source-sans-pro: (
+///         'app-path': '../core/assets/commons/fonts/',
+///         'font-name': 'Source Sans Pro',
+///         'font-file-name': 'SourceSansPro',
+///         'font-weights': (
+///             (ExtraLight, 200),
+///             (Light, 300),
+///             (Regular, 400),
+///             (Semibold, 600),
+///             (Bold, 700),
+///             (Black, 900)
+///         )
+///     );
+/// 
+/// @example SCSS - Usage
+///   @include load-font-face($source-sans-pro);
+/// 
+/// @example css - CSS Output
+///   @font-face {
+///     font-family: "Source Sans Pro";
+///     font-style: normal;
+///     font-weight: 700;
+///     src: url("../core/assets/commons/fonts/SourceSansPro/SourceSansPro-Bold.woff2") format("woff2"), url("../core/assets/commons/fonts/SourceSansPro/SourceSansPro-Bold.woff") format("woff"); 
+///   }
+/// 
+/// @require map-get
+/// @require map-has-key
+/// @require type-of
+/// 
+@mixin gen-font-face($ff) {
+    $ff-path: '';
+    $ff-name: '';
+    $ff-file: '';
+    $ff-weights: '';
+    @if map-has-key($ff, 'path') {
+        $ff-path: map-get($ff, 'path');
+    }
+    @if map-has-key($ff, 'font-name') {
+        $ff-name: map-get($ff, 'font-name');
+    }
+    @if map-has-key($ff, 'file-name') {
+        $ff-file: map-get($ff, 'file-name');
+    }
+    @if map-has-key($ff, 'weights') {
+        $ff-weights: map-get($ff, 'weights');
+    }
+    @if type-of($ff-weights)==list {
+        @each $weight in $ff-weights {
+            @include font-face('#{$ff-name}', '#{$ff-path}/#{$ff-file}/#{$ff-file}-#{nth($weight,1)}', #{nth($weight, 2)}, $file-formats: woff woff2);
+        }
+    }
+    @else {
+        @include font-face('#{$ff-name}', '#{$ff-path}/#{$ff-file}/#{$ff-file}', normal);
+    }
+}
+
