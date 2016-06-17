@@ -314,7 +314,7 @@ input, select {
 }
 
 .app-nav {
-  margin-top: 5rem;
+  margin: 5rem 0 2rem 0;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -422,6 +422,7 @@ input, select {
   border-radius: 0;
   box-shadow: none;
   font-family: "Source Sans Pro";
+  font-size: 1.4rem;
   font-weight: 700;
   font-style: normal;
   text-decoration: none;
@@ -468,6 +469,38 @@ input, select {
   opacity: .25;
   cursor: default;
   pointer-events: none;
+}
+
+.app-notifications {
+  padding: 1.7rem;
+  background: #e3e4e5;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.app-notifications > div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.app-notifications > div figure {
+  width: 13rem;
+}
+.app-notifications > div figure img {
+  width: 100%;
+}
+.app-notifications > div h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 1.5rem 0;
+  font-family: "Raleway";
+}
+.app-notifications > div p {
+  font-size: 1.6rem;
+  margin: 0.75rem 0;
 }
 
 body {

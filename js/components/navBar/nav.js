@@ -26,7 +26,7 @@ var NavBar = React.createClass({
         });
         return (
             <div className="navbar">
-                <a className="logo">Super Advisor</a>
+                <a href="#dashboard" className="logo">Super Advisor</a>
                 <ul className="nav">{buttons}</ul>
             </div>
         );

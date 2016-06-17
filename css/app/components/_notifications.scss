@@ -1,0 +1,29 @@
+.app-notifications {
+    @include gen-box-model($padding: unmap($spacings, x-large), $bg: $fries-color-light);
+    // @include grid-row($justify: center);
+    text-align: center;
+    margin-bottom: 2rem;
+    > div {
+        @include grid-row($width: true, $direction: column);
+        // width: 100%;
+    }
+}
+
+.app-notifications > div {
+    figure {
+        width: 13rem;
+        img {
+            width: 100%;
+        }
+    }
+    h2 {
+        font-size: 3rem;
+        font-weight: unmap($font-weights, bold);
+        margin: unmap($spacings, large) 0;
+        font-family: unmap($font-families, secondary);
+    }
+    p {
+        font-size: 1.6rem;
+        margin: unmap($spacings, small) 0;
+    }
+}
