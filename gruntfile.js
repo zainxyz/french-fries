@@ -15,7 +15,12 @@ module.exports = function(grunt) {
             }
         },
         // Clean the app.js file
-        clean: ['js/app.js'],
+        clean: {
+           build: ['js/app.js'],
+           options: {
+               force: true
+           }
+        },
         // Watch the files
         watch: {
             options: {
