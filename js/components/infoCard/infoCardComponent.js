@@ -1,8 +1,9 @@
 var InfoCardHeader = React.createClass({
+
 	render: function(){
 		return (
 			<header className="InfoCardHeader">
-				<h1>{this.props.infoCardTitle}</h1>
+				<h1>{this}</h1>
 			</header>
 		);
 	}
@@ -47,6 +48,7 @@ var InfoCardListRow = React.createClass({
   }
 });
 
+
 var InfoCardNetWorth = React.createClass({
 	render: function(){
 		console.log("InfoCardNetWorth",this.props.netData);
@@ -72,16 +74,17 @@ var InfoCardFooter = React.createClass({
 var InfoCardComponent = React.createClass({
   render: function() {
   	console.log("max");
+  	console.log(this.props);
     return (	
-      <section className={'InfoCardComponent ' + this.props.cardData.title.toLowerCase()}>
+      <section className={'InfoCardComponent ' + this.props.cardData.type.toLowerCase()}>
 		<InfoCardHeader 
-			infoCardTitle = {this.props.cardData.title}
+			infoCardTitle = {this.props.cardData}
 		/>
 		<InfoCardMain 
 			infoCardMainData = {this.props.cardData}
 		/>
 		<InfoCardNetWorth
-			netData = {this.props.cardData.netValue}
+			netData = {this.props.cardData.balance}
 		/>
 		<InfoCardFooter 
 			infoCardFooter = {this.props.cardData.footerText}
@@ -104,12 +107,18 @@ var InfoCards = React.createClass({
 		singleCard.height(maxHeight);
 	},
 	render: function(){
-		var cardDOM = [];
+		var cardDOM = [],
+			self = this;
 		
 		console.log('InfoCards');
-		console.log(this);
+		console.log(self);
+		console.log(self.props);
+		console.log("self.props.cardData");
+		console.log(self.props.cardData);
 
-		this.props.cardData.forEach(function(key, value){
+		self.props.cardData.forEach(function(key, value){
+			console.log('key from infoCards', key);
+			console.log('value from infoCards', value);
 			cardDOM.push(<InfoCardComponent cardData={key} key={value} />);
 		});
 
