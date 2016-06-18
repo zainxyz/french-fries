@@ -29,11 +29,10 @@ var InfoCardTable = React.createClass({
 	render: function(){
 		console.log("InfoCardTable", this.props);
 		var rows = [];
-		var dumbIncrementer = 0;
-		// fix the key that is passed inside this forEach...also why the shit is that not built into ReactJS
-		this.props.rowsData.forEach(function(data){
-			rows.push(<InfoCardTableRow label={data.label} key={dumbIncrementer}/>);
-		++dumbIncrementer;
+		// var dumbIncrementer = 0;
+		this.props.rowsData.forEach(function(key, value, obj){
+			rows.push(<InfoCardTableRow label={key.label} value={key.value}/>);
+			// ++dumbIncrementer;
 		});
 		return (
 			<table>
