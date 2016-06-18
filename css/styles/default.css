@@ -641,46 +641,96 @@ table > tbody > tr:hover {
   margin: 0.75rem 0;
 }
 
-.financial-snapshot {
-  height: 100rem;
+.FinancialSnapshotComponent {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end;
   flex-direction: row;
-  flex-wrap: no-wrap;
+  flex-wrap: wrap;
+  padding: 2rem;
+  background: #fff;
+  margin-bottom: 2rem;
 }
-.financial-snapshot > div {
+.FinancialSnapshotComponent > div {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-direction: row;
+  flex-wrap: wrap;
   flex-basis: 100%;
   max-width: 100%;
-  position: absolute;
 }
 @media screen and (min-width: 769px) {
-  .financial-snapshot > div {
+  .FinancialSnapshotComponent > div {
     flex-basis: 49.25%;
     max-width: 49.25%;
   }
 }
-.financial-snapshot > div.assets-liabilities > div {
-  border-top: .1rem dashed;
-  width: 40rem;
+
+.FinancialSnapshotComponent .bubble {
+  height: 10rem;
+  width: 10rem;
+  position: absolute;
+  right: 2rem;
+  top: 0;
+  border-radius: 50%;
+  background: rgba(121, 178, 250, 0.25);
+  border: .25rem solid transparent;
+  z-index: 0;
 }
-.financial-snapshot > div.assets-liabilities > div.assets {
-  border-left: 10rem solid;
-  border-color: red;
+.FinancialSnapshotComponent .bubble div {
+  width: 90%;
+  font-size: 1.2rem;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
-.financial-snapshot > div.assets-liabilities > div.liabilities {
-  border-right: 10rem solid;
-  border-color: purple;
+.FinancialSnapshotComponent .bubble div p:first-of-type {
+  font-weight: 300;
 }
-.financial-snapshot > div.cash-expenses {
-  display: none;
+
+.FinancialSnapshotComponent .snapshot-chart {
+  z-index: 1;
+  flex-basis: 100%;
+  max-width: 100%;
 }
-.financial-snapshot > div.cash-expenses .cash {
-  background: blue;
+@media screen and (min-width: 769px) {
+  .FinancialSnapshotComponent .snapshot-chart {
+    flex-basis: 49.25%;
+    max-width: 49.25%;
+  }
 }
-.financial-snapshot > div.cash-expenses .expenses {
-  background: pink;
+.FinancialSnapshotComponent .snapshot-chart .graph {
+  width: 49.25%;
+  background: rgba(243, 242, 244, 0.5);
+}
+.FinancialSnapshotComponent .snapshot-chart .title p:first-of-type {
+  font-weight: 300;
+}
+.FinancialSnapshotComponent .snapshot-chart.assets .graph {
+  background: #43aba4;
+  height: 20rem;
+}
+.FinancialSnapshotComponent .snapshot-chart.liabilities .graph {
+  background: #df2664;
+  height: 12rem;
+}
+.FinancialSnapshotComponent .snapshot-chart.cash .graph {
+  background: #88c429;
+  height: 15rem;
+}
+.FinancialSnapshotComponent .snapshot-chart.expenses .graph {
+  background: #98195f;
+  height: 6rem;
 }
 
 .InfoCards {
@@ -777,10 +827,10 @@ table > tbody > tr:hover {
   background: #df2664;
 }
 .InfoCardComponent.income > .InfoCardNetWorth {
-  border-color: #c43029;
+  border-color: #88c429;
 }
 .InfoCardComponent.income > footer {
-  background: #c43029;
+  background: #88c429;
 }
 .InfoCardComponent.expenses > .InfoCardNetWorth {
   border-color: #98195f;

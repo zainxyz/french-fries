@@ -1,28 +1,57 @@
 var FinancialSnapshotComponent = React.createClass({
 	render: function(){
 		return (
-			<section className = "financial-snapshot">
-				<div className = "assets-liabilities">
-					<div className = "assets">
-						<span>Total Assets</span>
-						<span>$203,500.00</span>
+			<section className="FinancialSnapshotComponent">
+				<div className="assets-liabilities">
+					<div className="snapshot-chart assets">
+						<div className="title">
+							<p>Total Assets</p>
+							<p>$203,500.00</p>
+						</div>	
+						<div className="graph"></div>
 					</div>
-					<div className = "liabilities">
-						<span>Total Liabilities</span>
-						<span>$203,500.00</span>
+					<div className="snapshot-chart liabilities">
+						<div className="title">
+							<p>Total Liabilities</p>
+							<p>$203,500.00</p>
+						</div>	
+						<div className="graph"></div>
+					</div>
+					<div className="bubble">
+						<div>
+							<p>Net Worth<br />(as of today)</p>
+							<p>$178,500.00</p>
+						</div>	
 					</div>
 				</div>
-				<div className = "cash-expenses">
-					<div className = "cash">
-						<span>Total Cash</span>
-						<span>$203,500.00</span>
+				<div className="cash-expenses">
+					<div className="snapshot-chart cash">
+						<div className="title">
+							<p>Total Cash</p>
+							<p>$203,500.00</p>
+						</div>	
+						<div className="graph"></div>
 					</div>
-					<div className = "expenses">
-						<span>Total Expenses</span>
-						<span>$203,500.00</span>
+					<div className="snapshot-chart expenses">
+						<div className="title">
+							<p>Total Expenses</p>
+							<p>$203,500.00</p>
+						</div>	
+						<div className="graph"></div>
+					</div>
+					<div className="bubble">
+						<div>
+							<p>Net Cash Flow</p>
+							<p>$63,638.00</p>
+						</div>	
 					</div>
 				</div>
 			</section>
 		);
 	}
 });
+
+// ReactDOM.render(
+//     <FinancialSnapshotComponent />,
+//     document.getElementById('financial_snapshot')
+// );

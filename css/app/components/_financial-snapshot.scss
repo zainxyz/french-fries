@@ -1,31 +1,112 @@
-.financial-snapshot {
-	height: 100rem;
-    @include grid-row($align: flex-start, $wrap: no-wrap);
+// .financial-snapshot {
+//     height: 50rem;
+//     @include grid-row($align: flex-start, $wrap: no-wrap);
+//     > div {
+//         @include grid-columns($sizes: (12, 6));
+//         position: absolute;
+//         &.assets-liabilities {
+//             > div {
+//                 border-top: .1rem dashed;
+//                 width: 30rem;
+//                 position: absolute;
+//                 bottom: 0;
+//                 &.assets {
+//                     height: 40rem;
+//                     border-left: 10rem solid;
+//                     border-color: red;
+//                 }
+//                 &.liabilities {
+//                     height: 25rem;
+//                     border-right: 10rem solid;
+//                     border-color: purple;
+//                 }
+//             }
+//         }
+//         &.cash-expenses {
+//             display: none;
+//             & .cash {
+//                 background: blue;
+//             }
+//             & .expenses {
+//                 background: pink;
+//             }
+//         }
+//     }
+// }
+.FinancialSnapshotComponent {
+    @include grid-row($align: flex-end);
+    @include gen-box-model($padding: unmap($spacings, xx-large));
+    background: #fff;
+    margin-bottom: unmap($spacings, xx-large);
     > div {
+        position: relative;
+        @include grid-row($align: flex-end);
         @include grid-columns($sizes: (12, 6));
+    }
+}
+
+.FinancialSnapshotComponent .bubble {
+    @include size(10rem);
+    position: absolute;
+    right: 2rem;
+    top: 0;
+    // bottom: 10rem;
+    border-radius: 50%;
+    background: rgba($fries-color-tertiary, .25);
+    border: .25rem solid transparent;
+    z-index: 0;
+    div {
+        width: 90%;
+        font-size: 1.2rem;
+        text-align: center;
         position: absolute;
-        &.assets-liabilities {
-        	> div {
-        		border-top: .1rem dashed;
-        		width: 40rem;
-	            &.assets {
-	                border-left: 10rem solid;
-	                border-color: red;
-	            }
-	            &.liabilities {
-	                border-right: 10rem solid;
-	                border-color: purple;
-	            }
+        top: 50%;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
+        p {
+            &:first-of-type {
+                font-weight: unmap($font-weights, light);
             }
         }
-        &.cash-expenses {
-        	display: none;
-            & .cash {
-                background: blue;
+    }
+}
+
+.FinancialSnapshotComponent .snapshot-chart {
+    z-index: 1;
+    @include grid-columns($sizes: (12, 6));
+    .graph {
+        @include grid-columns($display: none, $sizes: (6));
+        background: rgba($fries-color-light, .5);
+    }
+    .title {
+        p {
+            &:first-of-type {
+                font-weight: unmap($font-weights, light);
             }
-            & .expenses {
-                background: pink;
-            }
+        }
+    }
+    &.assets {
+        .graph {
+            background: $fries-color-chart-1;
+            height: 20rem;
+        }
+    }
+    &.liabilities {
+        .graph {
+            background: $fries-color-chart-2;
+            height: 12rem;
+        }
+    }
+    &.cash {
+        .graph {
+            background: $fries-color-chart-3;
+            height: 15rem;
+        }
+    }
+    &.expenses {
+        .graph {
+            background: $fries-color-chart-4;
+            height: 6rem;
         }
     }
 }

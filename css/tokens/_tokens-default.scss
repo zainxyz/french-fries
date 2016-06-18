@@ -21,8 +21,12 @@ $app-colors: (
 		// 'primary': #0aefef,
 		'primary': #43aba4,
 		'secondary': #00aaad,
-		'tertiary': #00ad8e,
+		'tertiary': #79b2fa,
 		'quaternary': #1589ee,
+		'chart-1': #43aba4,
+		'chart-2': #df2664,
+		'chart-3': #88c429,
+		'chart-4': #98195f,
 		'dark': #1a1b1f,
 		// 'light': #efefef,
 		// 'light': #e3e4e5,
@@ -180,6 +184,10 @@ $fries-color-error: unmap($app-colors, brand, error);
 $fries-color-warning: unmap($app-colors, brand, warning);
 $fries-color-black: unmap($app-colors, brand, dark);
 $fries-color-light: unmap($app-colors, brand, light);
+$fries-color-chart-1: unmap($app-colors, brand, chart-1);
+$fries-color-chart-2: unmap($app-colors, brand, chart-2);
+$fries-color-chart-3: unmap($app-colors, brand, chart-3);
+$fries-color-chart-4: unmap($app-colors, brand, chart-4);
 // 
 // Anchor Colors
 // 

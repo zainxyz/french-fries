@@ -64,34 +64,34 @@
 .InfoCardComponent {
     &.assets {
     	> .InfoCardNetWorth {
-    		border-color: #43aba4;
+    		border-color: $fries-color-chart-1;
     	}
         > footer {
-            background: #43aba4;
+            background: $fries-color-chart-1;
         }
     }
     &.liabilities {
     	> .InfoCardNetWorth {
-    		border-color: #df2664;
+    		border-color: $fries-color-chart-2;
     	}
         > footer {
-            background: #df2664;
+            background: $fries-color-chart-2;
         }
     }
     &.income {
     	> .InfoCardNetWorth {
-    		border-color: #c43029;
+    		border-color: $fries-color-chart-3;
     	}
         > footer {
-            background: #c43029;
+            background: $fries-color-chart-3;
         }
     }
     &.expenses {
     	> .InfoCardNetWorth {
-    		border-color: #98195f;
+    		border-color: $fries-color-chart-4;
     	}
         > footer {
-            background: #98195f;
+            background: $fries-color-chart-4;
         }
     }
 }
