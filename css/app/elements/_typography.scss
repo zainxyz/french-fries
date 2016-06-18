@@ -11,6 +11,43 @@ $font-icon-map: ('path': '../muse/assets/fonts', 'font-name': 'icomoon', 'file-n
 @include gen-font-face($font-primary-map);
 @include gen-font-face($font-secondary-map);
 @include gen-font-face($font-icon-map);
+/////////////////////
+// Admin Icons Map //
+/////////////////////
+$admin-gen-icons: (
+    'cash-revenue': e9b5,
+    'credit-card': e9ae,
+    'student-loan': e9e7,
+    'home-down-payment': e900,
+    'retirement': eae9,
+    'vacation': e924,
+    'trash-can': e909,
+    'edit': e97b,
+    'copy': e9ba
+);
+////////////////////////////////////////
+// The IconStyle for the Icon Classes //
+////////////////////////////////////////
+$icon-style: (
+    'family': unmap($font-families, icon),
+    'size': inherit,
+    'weight': normal,
+    'transform': none,
+    'style': normal,
+    'decoration': none,
+    'line-height': 1
+) !default;
+////////////////////////
+// Generate the Icons //
+////////////////////////
+@include gen-icons($admin-gen-icons);
+///////////////////////////////////
+// Generate the [.ico-*] classes //
+///////////////////////////////////
+[class^="ico-"], [class*=" ico-"] {
+    @include gen-font-style-map($icon-style);
+    speak: none;
+}
 
 body {
     // background-color: $fries-color-background-body; // #F3F2F4

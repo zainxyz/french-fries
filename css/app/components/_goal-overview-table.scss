@@ -1,0 +1,41 @@
+.GoalOverviewTable {
+    @include gen-box-model($padding: unmap($spacings, xx-large), $bg: #fff);
+    td, th {
+        text-align: left;
+        &.icon {
+            @include grid-columns($sizes: (12, 1));
+            color: $anchor-color;
+        }
+        &.goal-name {
+            @include grid-columns($sizes: (12, 3));
+        }
+        &.target-amount {
+            @include grid-columns($sizes: (12, 3));
+            text-align: right;
+            justify-content: flex-end;
+        }
+        &.target-date {
+            @include grid-columns($sizes: (12, 3));
+            text-align: right;
+            justify-content: flex-end;
+        }
+        &.progress-to-goal {
+            @include grid-columns($sizes: (12, 3));
+            text-align: right;
+            justify-content: flex-end;
+        }
+        &.edit {
+            @include grid-columns($sizes: (12, 1));
+            text-align: center;
+        }
+        &.delete {
+            @include grid-columns($sizes: (12, 1));
+            text-align: center;
+        }
+    }
+    td {
+        &.goal-name {
+            font-weight: unmap($font-weights, normal);
+        }
+    }
+}

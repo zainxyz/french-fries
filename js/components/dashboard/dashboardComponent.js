@@ -19,42 +19,42 @@ var CHART_SAMPLE_DATA = [15, 22, 32, 41]
 
 var GOALS_DATA = [
 	{
-		icon: 'icon',
+		icon: 'cash-revenue',
 		goalName: 'Cash Reserve',
 		targetAmount: 20000,
 		targetDate: 2016,
 		progressToGoal: 100
 	},
 	{
-		icon: 'icon',
+		icon: 'credit-card',
 		goalName: 'Credit Card Payoff',
 		targetAmount: 5000,
 		targetDate: 2020,
 		progressToGoal: 80
 	},
 	{
-		icon: 'icon',
+		icon: 'student-loan',
 		goalName: 'Student Loan Payoff',
 		targetAmount: 20000,
 		targetDate: 2016,
 		progressToGoal: 100
 	},
 	{
-		icon: 'icon',
+		icon: 'home-down-payment',
 		goalName: 'Home Down Payment',
 		targetAmount: 20000,
 		targetDate: 2016,
 		progressToGoal: 100
 	},
 	{
-		icon: 'icon',
+		icon: 'retirement',
 		goalName: 'Retirement',
 		targetAmount: 20000,
 		targetDate: 2016,
 		progressToGoal: 100
 	},
 	{
-		icon: 'icon',
+		icon: 'vacation',
 		goalName: 'Vacation',
 		targetAmount: 20000,
 		targetDate: 2016,

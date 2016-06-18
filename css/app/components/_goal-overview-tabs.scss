@@ -1,0 +1,21 @@
+.GoalOverviewTabs {
+    @include grid-row($justify: flex-start);
+    li {
+        a {
+            @include gen-box-model($padding: unmap($spacings, large));
+            @include transition(border-bottom-color .3s $ease-in-out-quad);
+            display: block;
+            color: $fries-color-black;
+            text-transform: capitalize;
+            border-bottom: .3rem solid transparent;
+            &:hover {
+            	border-bottom-color: $anchor-color;
+            }
+        }
+        &.current {
+            a {
+                border-bottom-color: $anchor-color;
+            }
+        }
+    }
+}
