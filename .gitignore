@@ -1,4 +1,6 @@
 js/app.js
+css/styles/default.css
+css/styles/default.css.map
 node_modules/
 **.DS_Store
 **/.sass-cache

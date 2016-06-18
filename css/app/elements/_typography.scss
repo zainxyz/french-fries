@@ -11,3 +11,29 @@ $font-icon-map: ('path': '../muse/assets/fonts', 'font-name': 'icomoon', 'file-n
 @include gen-font-face($font-primary-map);
 @include gen-font-face($font-secondary-map);
 @include gen-font-face($font-icon-map);
+
+body {
+    // background-color: $fries-color-background-body; // #F3F2F4
+    padding: 0;
+    font: unmap($font-weights, normal) #{unmap($font-sizes, x-large)}/1.2 unmap($font-families, primary);
+    color: $fries-color-black;
+    @include media(unmap($breakpoints, desktop)) {
+        font: unmap($font-weights, normal) #{unmap($font-sizes, regular)}/1.2 unmap($font-families, primary);
+    }
+}
+
+a {
+    color: $anchor-color;
+    text-decoration: none;
+    cursor: pointer;
+    @include transition(color .2s $ease-in-out-quad);
+    &:link {
+        color: $anchor-color;
+    }
+    &:hover {
+        color: $anchor-color-hover;
+    }
+    &:active {
+        color: $anchor-color-active;
+    }
+}
