@@ -10,7 +10,7 @@ module.exports = function(grunt) {
         // Concat all files into one file
         concat: {
             js: {
-                src: ['js/components/**/*.js', 'js/components/interface.js'],
+                src: ['js/**/*.js'],
                 dest: 'js/app.js'
             }
         },
