@@ -12,38 +12,41 @@ var DashboardComponent = React.createClass({
 });
 
 var CARD_DATA = [{
-	title: 'Assets',
-	tableValues: [
-		{label: 'label 1', value: 'value 1'},
-		{label: 'label 2', value: 'value 2'},
-		{label: 'label 3', value: 'value 3'},
-		{label: 'label 4', value: 'value 4'},
-		{label: 'label 5', value: 'value 5'}
-	],
-	netValue: '$123,456.78',
-	footerText: 'Whatever, man.'
-},{
-	title: 'Assets',
-	tableValues: [
-		{label: 'label 1', value: 'value 1'},
-		{label: 'label 2', value: 'value 2'},
-		{label: 'label 3', value: 'value 3'},
-		{label: 'label 4', value: 'value 4'},
-		{label: 'label 5', value: 'value 5'}
-	],
-	netValue: '$123,456.78',
-	footerText: 'Whatever, man.'
-},{
-	title: 'Assets',
-	tableValues: [
-		{label: 'label 1', value: 'value 1'},
-		{label: 'label 2', value: 'value 2'},
-		{label: 'label 3', value: 'value 3'},
-		{label: 'label 4', value: 'value 4'},
-		{label: 'label 5', value: 'value 5'}
-	],
-	netValue: '$123,456.78',
-	footerText: 'Whatever, man.'
+    title: 'Assets',
+    tableValues: [
+        { label: 'B of A Checking & Savings', value: '19500' },
+        { label: 'TD Ameritrade', value: '84000' },
+        { label: 'GWRS 401k', value: '100000' }
+    ],
+    netValue: '203500',
+    footerText: 'what i own'
+}, {
+    title: 'Liabilities',
+    tableValues: [
+        { label: 'Credit Card Debt', value: '5000' },
+        { label: 'Other Loans', value: '20000' }
+    ],
+    netValue: '25000',
+    footerText: 'what i owe'
+}, {
+    title: 'Income',
+    tableValues: [
+        { label: 'Akeem\'s Annual Pay', value: '120000' },
+        { label: 'Ingrid\'s Annual Pay', value: '95000' }
+    ],
+    netValue: '215000',
+    footerText: 'what i earn'
+}, {
+    title: 'Expenses',
+    tableValues: [
+        { label: 'Rent', value: '29832' },
+        { label: 'Food & Groceries', value: '12600' },
+        { label: 'Clothing & Shopping', value: '24000' },
+        { label: 'Transportation', value: '8940' },
+        { label: 'Tax & Other', value: '75990' }
+    ],
+    netValue: '151362',
+    footerText: 'how much i spend'
 }];
 
 

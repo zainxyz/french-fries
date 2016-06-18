@@ -1,7 +1,7 @@
 var InfoCardHeader = React.createClass({
 	render: function(){
 		return (
-			<header>
+			<header className="InfoCardHeader">
 				<h1>Header</h1>
 			</header>
 		);
@@ -12,11 +12,11 @@ var InfoCardMain = React.createClass({
 	render: function(){
 		console.log("InfoCardMain", this.props);
 		return (
-			<main>
-				<InfoCardTable
+			<main className="InfoCardMain">
+				<InfoCardList
 					rowsData = {this.props.infoCardMainData.tableValues}
 				/>				
-				<InfoCardNet
+				<InfoCardNetWorth
 					netData = {this.props.infoCardMainData.netValue}
 				/>	
 			</main>
@@ -25,39 +25,35 @@ var InfoCardMain = React.createClass({
 	}
 });
 
-var InfoCardTable = React.createClass({
+var InfoCardList = React.createClass({
 	render: function(){
-		console.log("InfoCardTable", this.props);
+		console.log("InfoCardList", this.props);
 		var rows = [];
-		// var dumbIncrementer = 0;
 		this.props.rowsData.forEach(function(key, value, obj){
-			rows.push(<InfoCardTableRow label={key.label} value={key.value} key={key.label.toLowerCase().replace(' ', '')} />);
-			// ++dumbIncrementer;
+			rows.push(<InfoCardListRow label={key.label} value={key.value} key={key.label.toLowerCase().replace(' ', '')} />);
 		});
 		return (
-			<table>
-				<tbody>{rows}</tbody>
-			</table>	
+			<ul className="InfoCardList">{rows}</ul>
 		);
 	}
 });
 
-var InfoCardTableRow = React.createClass({
+var InfoCardListRow = React.createClass({
 	render: function() {
     return (
-      <tr>
-        <td>{this.props.label}</td>
-        <td>{this.props.value}</td>
-      </tr>
+      <li>
+        <p>{this.props.label}</p>
+        <p>{this.props.value}</p>
+      </li>
     );
   }
 });
 
-var InfoCardNet = React.createClass({
+var InfoCardNetWorth = React.createClass({
 	render: function(){
-		console.log("InfoCardNet",this.props.netData);
+		console.log("InfoCardNetWorth",this.props.netData);
 		return	(
-			<section>{this.props.netData}</section>
+			<div className="InfoCardNetWorth">{this.props.netData}</div>
 		);
 	}
 });
@@ -65,8 +61,7 @@ var InfoCardNet = React.createClass({
 var InfoCardFooter = React.createClass({
 	render: function(){
 		return (
-			<footer>This is a foot.
-			</footer>
+			<footer className="InfoCardFooter">{this.props.infoCardFooter}</footer>
 		);
 
 	}
@@ -77,7 +72,7 @@ var InfoCardComponent = React.createClass({
   render: function() {
   	console.log("max");
     return (	
-      <section>
+      <section className="InfoCardComponent">
 		<InfoCardHeader 
 			infoCardTitle = {this.props.cardData.title}
 		/>
@@ -96,16 +91,18 @@ var InfoCardComponent = React.createClass({
 var InfoCards = React.createClass({
 	render: function(){
 		var cardDOM = [];
+		
 		console.log('InfoCards');
 		console.log(this);
 
 		this.props.cardData.forEach(function(key, value){
 			cardDOM.push(<InfoCardComponent cardData={key} key={value} />);
-			
 		});
+
 		console.log("cardDom",cardDOM);
+		
 		return (
-			<div>{cardDOM}</div>
+			<section className="InfoCards">{cardDOM}</section>
 		);
 	}
 })
