@@ -1,9 +1,18 @@
 var FinancialSnapshotComponent = React.createClass({
 	render: function(){
 		return (
-			<div>
-				<p>Financial Snapshot</p>
-			</div>
+			<section className="financial-snapshot">
+				<div>
+					<div>
+						Total Assets
+						$203,500.00
+					</div>
+					<div>
+
+					</div>
+				</div>
+				<div></div>
+			</section>
 		);
 	}
 });

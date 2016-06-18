@@ -508,6 +508,10 @@ a:active {
   margin: 0.75rem 0;
 }
 
+.financial-snapshot {
+  background: red;
+}
+
 .InfoCards {
   margin: 2rem 0;
   width: 100%;
