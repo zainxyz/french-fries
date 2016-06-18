@@ -1,8 +1,8 @@
 var HouseholdComponent = React.createClass({
   render: function() {
     return (
-      <div>
-      	<p>Whats up, HouseholdComponenta!</p>
+      <div className="HouseholdComponent">
+      	<p>Whats up, HouseholdComponent!</p>
       	<FilterableProductTable products={PRODUCTS} />
       </div>
       )

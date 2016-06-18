@@ -43,7 +43,12 @@
  	routes : {
  		"household" : "household",
  		"goals" : "goals",
- 		"accounts" : "accounts"
+ 		"accounts" : "accounts",
+ 		"*404" : "dashboard"
+ 	},
+ 	dashboard : function() {
+ 		console.log("We at the dashboard.");
+ 		this.current = "dashboard";
  	},
  	household : function() {
  		console.log("We at the household.");

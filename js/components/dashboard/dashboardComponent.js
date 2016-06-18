@@ -2,11 +2,13 @@
 var DashboardComponent = React.createClass({
 	render: function(){
 		return (
-			<InfoCards cardData={CARD_DATA}/>, document.getElementById('test')
+			<div className="DashboardComponent">
+      			<p>Whats up, DashboardComponent!</p>
+				<InfoCards cardData={CARD_DATA} />
+			</div>
 		);
-}
+	}
 });
-
 
 var CARD_DATA = [{
 	title: 'Assets',

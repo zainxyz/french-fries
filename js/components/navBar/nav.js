@@ -34,6 +34,7 @@ var NavBar = React.createClass({
 });
 
 var buttonArray = [
+    {name: 'Dashboard'},
     {name: 'Household'},
     {name: 'Goals'},
     {name: 'Accounts'},
