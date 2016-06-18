@@ -7,7 +7,7 @@
     @include grid-row($width: true, $justify: center);
     > .navbar {
         @include grid-row($width: true);
-        @include grid-columns($sizes: (12, 12, 9, 8));
+        // @include grid-columns($sizes: (12, 12, 9, 8));
         > a.logo {
             @include grid-columns($sizes: (12, 12, 4, 3));
         }
