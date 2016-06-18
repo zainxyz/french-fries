@@ -109,13 +109,14 @@ var InfoCards = React.createClass({
 	render: function(){
 		var cardDOM = [],
 			self = this;
-		
+		debugger;
 		console.log('InfoCards');
 		console.log(self);
 		console.log(self.props);
 		console.log("self.props.cardData");
 		console.log(self.props.cardData);
 
+		debugger;
 		self.props.cardData.forEach(function(key, value){
 			console.log('key from infoCards', key);
 			console.log('value from infoCards', value);
