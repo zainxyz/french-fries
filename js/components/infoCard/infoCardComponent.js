@@ -2,7 +2,7 @@ var InfoCardHeader = React.createClass({
 	render: function(){
 		return (
 			<header className="InfoCardHeader">
-				<h1>Header</h1>
+				<h1>{this.props.infoCardTitle}</h1>
 			</header>
 		);
 	}
@@ -15,10 +15,7 @@ var InfoCardMain = React.createClass({
 			<main className="InfoCardMain">
 				<InfoCardList
 					rowsData = {this.props.infoCardMainData.tableValues}
-				/>				
-				<InfoCardNetWorth
-					netData = {this.props.infoCardMainData.netValue}
-				/>	
+				/>					
 			</main>
 		);	
 
@@ -41,7 +38,7 @@ var InfoCardList = React.createClass({
 var InfoCardListRow = React.createClass({
 	render: function() {
     return (
-      <li>
+      <li className="InfoCardListRow">
         <p>{this.props.label}</p>
         <p>{this.props.value}</p>
       </li>
@@ -53,7 +50,9 @@ var InfoCardNetWorth = React.createClass({
 	render: function(){
 		console.log("InfoCardNetWorth",this.props.netData);
 		return	(
-			<div className="InfoCardNetWorth">{this.props.netData}</div>
+			<div className="InfoCardNetWorth">
+				<p>{this.props.netData}</p>
+			</div>
 		);
 	}
 });
@@ -72,12 +71,15 @@ var InfoCardComponent = React.createClass({
   render: function() {
   	console.log("max");
     return (	
-      <section className="InfoCardComponent">
+      <section className={'InfoCardComponent ' + this.props.cardData.title.toLowerCase()}>
 		<InfoCardHeader 
 			infoCardTitle = {this.props.cardData.title}
 		/>
 		<InfoCardMain 
 			infoCardMainData = {this.props.cardData}
+		/>
+		<InfoCardNetWorth
+			netData = {this.props.cardData.netValue}
 		/>
 		<InfoCardFooter 
 			infoCardFooter = {this.props.cardData.footerText}

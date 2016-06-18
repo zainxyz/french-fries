@@ -1,3 +1,90 @@
 .InfoCards {
-	@include grid-row($wrap: wrap);
+    @include grid-row($align: flex-start, $wrap: wrap);
+    .InfoCardComponent {
+        position: relative;
+        @include grid-columns($sizes: (12, 6));
+        margin-bottom: unmap($spacings, xx-large);
+    }
+}
+
+.InfoCardComponent {
+    > header, > main, > footer {
+        @include gen-box-model($padding: unmap($spacings, xx-large));
+        font-size: 1.4rem;
+        background: #fff;
+        z-index: 1;
+    }
+    > .InfoCardNetWorth {
+        @include size(12.5rem);
+        position: absolute;
+        right: 2rem;
+        bottom: 3rem;
+        border-radius: 50%;
+        background: #fff;
+        border: .25rem solid transparent;
+        z-index: 2;
+        > p {
+            font-size: 2rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            @include transform(translate(-50%, -50%));
+        }
+    }
+}
+
+.InfoCardComponent > header {}
+
+.InfoCardComponent > main {
+    > .InfoCardList {
+        .InfoCardListRow {
+            @include grid-row();
+            @include grid-columns($sizes: (12, 7));
+            @include gen-box-model($padding: unmap($spacings, medium) 0);
+            p {}
+        }
+    }
+}
+
+.InfoCardComponent {
+    > footer {
+        padding: 2.3rem 1.7rem;
+        background: $fries-color-light;
+        text-transform: capitalize;
+    }
+}
+
+.InfoCardComponent {
+    &.assets {
+    	> .InfoCardNetWorth {
+    		border-color: red;
+    	}
+        > footer {
+            background: red;
+        }
+    }
+    &.liabilities {
+    	> .InfoCardNetWorth {
+    		border-color: blue;
+    	}
+        > footer {
+            background: blue;
+        }
+    }
+    &.income {
+    	> .InfoCardNetWorth {
+    		border-color: green;
+    	}
+        > footer {
+            background: green;
+        }
+    }
+    &.expenses {
+    	> .InfoCardNetWorth {
+    		border-color: yellow;
+    	}
+        > footer {
+            background: yellow;
+        }
+    }
 }

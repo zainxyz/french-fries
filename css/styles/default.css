@@ -312,6 +312,10 @@ input, select {
     max-width: 66.16667%;
   }
 }
+.app-content #app_content {
+  padding: 3rem;
+  background: #e3e4e5;
+}
 
 .app-nav {
   margin: 5rem 0 2rem 0;
@@ -507,13 +511,99 @@ input, select {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
 }
+.InfoCards .InfoCardComponent {
+  position: relative;
+  flex-basis: 100%;
+  max-width: 100%;
+  margin-bottom: 2rem;
+}
+@media screen and (min-width: 769px) {
+  .InfoCards .InfoCardComponent {
+    flex-basis: 49.25%;
+    max-width: 49.25%;
+  }
+}
 
-body {
-  background-color: #f2f3f4;
+.InfoCardComponent > header, .InfoCardComponent > main, .InfoCardComponent > footer {
+  padding: 2rem;
+  font-size: 1.4rem;
+  background: #fff;
+  z-index: 1;
+}
+.InfoCardComponent > .InfoCardNetWorth {
+  height: 12.5rem;
+  width: 12.5rem;
+  position: absolute;
+  right: 2rem;
+  bottom: 3rem;
+  border-radius: 50%;
+  background: #fff;
+  border: .25rem solid transparent;
+  z-index: 2;
+}
+.InfoCardComponent > .InfoCardNetWorth > p {
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.InfoCardComponent > main > .InfoCardList .InfoCardListRow {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  max-width: 100%;
+  padding: 1rem 0;
+}
+@media screen and (min-width: 769px) {
+  .InfoCardComponent > main > .InfoCardList .InfoCardListRow {
+    flex-basis: 57.70833%;
+    max-width: 57.70833%;
+  }
+}
+
+.InfoCardComponent > footer {
+  padding: 2.3rem 1.7rem;
+  background: #e3e4e5;
+  text-transform: capitalize;
+}
+
+.InfoCardComponent.assets > .InfoCardNetWorth {
+  border-color: red;
+}
+.InfoCardComponent.assets > footer {
+  background: red;
+}
+.InfoCardComponent.liabilities > .InfoCardNetWorth {
+  border-color: blue;
+}
+.InfoCardComponent.liabilities > footer {
+  background: blue;
+}
+.InfoCardComponent.income > .InfoCardNetWorth {
+  border-color: green;
+}
+.InfoCardComponent.income > footer {
+  background: green;
+}
+.InfoCardComponent.expenses > .InfoCardNetWorth {
+  border-color: yellow;
+}
+.InfoCardComponent.expenses > footer {
+  background: yellow;
 }
 
 /*# sourceMappingURL=default.css.map */

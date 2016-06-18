@@ -7,4 +7,8 @@
     > div {
         @include grid-columns($sizes: (12, 12, 9, 8));
     }
+    #app_content {
+        @include gen-box-model($padding: 3rem);
+        background: $fries-color-light;
+    }
 }
