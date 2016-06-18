@@ -31,7 +31,7 @@ var InfoCardTable = React.createClass({
 		var rows = [];
 		// var dumbIncrementer = 0;
 		this.props.rowsData.forEach(function(key, value, obj){
-			rows.push(<InfoCardTableRow label={key.label} value={key.value}/>);
+			rows.push(<InfoCardTableRow label={key.label} value={key.value} key={key.label.toLowerCase().replace(' ', '')} />);
 			// ++dumbIncrementer;
 		});
 		return (
