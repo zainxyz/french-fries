@@ -37,10 +37,11 @@ var InfoCardList = React.createClass({
 
 var InfoCardListRow = React.createClass({
 	render: function() {
+		var valueFormatted = numeral(this.props.value).format('$0,0.00');
     return (
       <li className="InfoCardListRow">
         <p>{this.props.label}</p>
-        <p>{this.props.value}</p>
+        <p>{valueFormatted}</p>
       </li>
     );
   }
@@ -49,9 +50,10 @@ var InfoCardListRow = React.createClass({
 var InfoCardNetWorth = React.createClass({
 	render: function(){
 		console.log("InfoCardNetWorth",this.props.netData);
+		var netWorth = numeral(this.props.netData).format('$0,0.00');
 		return	(
 			<div className="InfoCardNetWorth">
-				<p>{this.props.netData}</p>
+				<p>{netWorth}</p>
 			</div>
 		);
 	}
