@@ -126,29 +126,29 @@ var GOALS_DATA = [
 		icon: 'student-loan',
 		goalName: 'Student Loan Payoff',
 		targetAmount: 20000,
-		targetDate: 2016,
-		progressToGoal: 100
+		targetDate: 2020,
+		progressToGoal: 80
 	},
 	{
 		icon: 'home-down-payment',
 		goalName: 'Home Down Payment',
-		targetAmount: 20000,
-		targetDate: 2016,
-		progressToGoal: 100
+		targetAmount: 120000,
+		targetDate: 2025,
+		progressToGoal: 65
 	},
 	{
 		icon: 'retirement',
 		goalName: 'Retirement',
-		targetAmount: 20000,
-		targetDate: 2016,
-		progressToGoal: 100
+		targetAmount: 75000,
+		targetDate: '2046-2075',
+		progressToGoal: 25
 	},
 	{
 		icon: 'vacation',
 		goalName: 'Vacation',
-		targetAmount: 20000,
-		targetDate: 2016,
-		progressToGoal: 100
+		targetAmount: 6000,
+		targetDate: 2018,
+		progressToGoal: 83
 	},
 ];
 
