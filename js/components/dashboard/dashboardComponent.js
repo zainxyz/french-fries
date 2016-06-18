@@ -3,13 +3,59 @@ var DashboardComponent = React.createClass({
 		return (
 			<div className="DashboardComponent">
 				<GoalChartComponent />
-				<GoalOverviewComponent />
+				<GoalOverviewComponent goalsData={GOALS_DATA} />
 				<FinancialSnapshotComponent />
-				<InfoCards cardData={CARD_DATA} />
+				<InfoCards cardData={CARD_DATA} /> 
 			</div>
 		);
 	}
 });
+
+
+var GOALS_DATA = [
+	{
+		icon: 'icon',
+		goalName: 'Cash Reserve',
+		targetAmount: 20000,
+		targetDate: 2016,
+		progressToGoal: 100
+	},
+	{
+		icon: 'icon',
+		goalName: 'Credit Card Payoff',
+		targetAmount: 5000,
+		targetDate: 2020,
+		progressToGoal: 80
+	},
+	{
+		icon: 'icon',
+		goalName: 'Student Loan Payoff',
+		targetAmount: 20000,
+		targetDate: 2016,
+		progressToGoal: 100
+	},
+	{
+		icon: 'icon',
+		goalName: 'Home Down Payment',
+		targetAmount: 20000,
+		targetDate: 2016,
+		progressToGoal: 100
+	},
+	{
+		icon: 'icon',
+		goalName: 'Retirement',
+		targetAmount: 20000,
+		targetDate: 2016,
+		progressToGoal: 100
+	},
+	{
+		icon: 'icon',
+		goalName: 'Vacation',
+		targetAmount: 20000,
+		targetDate: 2016,
+		progressToGoal: 100
+	},
+];
 
 var CARD_DATA = [{
     title: 'Assets',
@@ -28,7 +74,7 @@ var CARD_DATA = [{
     ],
     netValue: '25000',
     footerText: 'what i owe'
-}, {
+},{
     title: 'Income',
     tableValues: [
         { label: 'Akeem\'s Annual Pay', value: '120000' },

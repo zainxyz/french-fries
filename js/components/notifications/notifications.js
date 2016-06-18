@@ -10,7 +10,7 @@ var NotificationsComponent = React.createClass({
 			</div>
 		);
 	}
-});
+}); 
 
 var settings = {
 	heading: 'Welcome BNP',
