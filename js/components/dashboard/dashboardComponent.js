@@ -3,13 +3,18 @@ var DashboardComponent = React.createClass({
 		return (
 			<div className="DashboardComponent">
 				<GoalChartComponent />
+				
 				<GoalOverviewComponent goalsData={GOALS_DATA} />
+				<ChartSampleComponent data={CHART_SAMPLE_DATA} />
 				<FinancialSnapshotComponent />
 				<InfoCards cardData={CARD_DATA} /> 
 			</div>
 		);
 	}
 });
+
+
+var CHART_SAMPLE_DATA = [15, 22, 32, 41]
 
 
 var GOALS_DATA = [
