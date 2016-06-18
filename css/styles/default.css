@@ -503,6 +503,15 @@ input, select {
   margin: 0.75rem 0;
 }
 
+.InfoCards {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 body {
   background-color: #f2f3f4;
 }

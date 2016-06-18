@@ -68,7 +68,7 @@
  
  ReactDOM.render(
  	<InterfaceComponent router={router} />,
- 	document.getElementById('interface')
+ 	document.getElementById('app_content')
  	);
  
  Backbone.history.start();
