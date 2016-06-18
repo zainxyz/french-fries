@@ -123,7 +123,7 @@ function loadData () {
 
  	   var self = this;
 
-       		debugger;
+       		// debugger;
 			if (self.props.router.current == "dashboard"){
 				return <DashboardComponent />;
 			}

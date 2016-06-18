@@ -42,7 +42,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['js/**/*.js'],
-                tasks: ['clean:js', 'concat:js', 'sass:default']
+                tasks: ['clean:js', 'concat:js']
             },
             scss: {
                 files: ['css/**/*.scss'],

@@ -1,9 +1,11 @@
 var InfoCardHeader = React.createClass({
 
 	render: function(){
+		console.log('this from InfoCardHeader');
+		console.log(this);
 		return (
 			<header className="InfoCardHeader">
-				<h1>{this}</h1>
+				<h1>{this.props.infoCardTitle.type}</h1>
 			</header>
 		);
 	}
@@ -11,11 +13,17 @@ var InfoCardHeader = React.createClass({
 
 var InfoCardMain = React.createClass({
 	render: function(){
+		var rowsData = [];
+		rowsData.push(
+        	{ label: this.props.infoCardMainData.id, value: this.props.infoCardMainData.balance.amount },
+		)
 		console.log("InfoCardMain", this.props);
+		console.log('balance', this.props.infoCardMainData.balance.amount);
 		return (
+
 			<main className="InfoCardMain">
 				<InfoCardList
-					rowsData = {this.props.infoCardMainData.tableValues}
+					rowsData = {rowsData}
 				/>					
 			</main>
 		);	
@@ -38,11 +46,11 @@ var InfoCardList = React.createClass({
 
 var InfoCardListRow = React.createClass({
 	render: function() {
-		var valueFormatted = numeral(this.props.value).format('$0,0.00');
+		// var valueFormatted = numeral(this.props.value).format('$0,0.00');
     return (
       <li className="InfoCardListRow">
         <p>{this.props.label}</p>
-        <p>{valueFormatted}</p>
+        <p>{this.props.value}</p>
       </li>
     );
   }
@@ -52,7 +60,7 @@ var InfoCardListRow = React.createClass({
 var InfoCardNetWorth = React.createClass({
 	render: function(){
 		console.log("InfoCardNetWorth",this.props.netData);
-		var netWorth = numeral(this.props.netData).format('$0,0.00');
+		var netWorth = numeral(this.props.netData.amount).format('$0,0.00');
 		return	(
 			<div className="InfoCardNetWorth">
 				<p>{netWorth}</p>
@@ -73,10 +81,27 @@ var InfoCardFooter = React.createClass({
 
 var InfoCardComponent = React.createClass({
   render: function() {
-  	console.log("max");
-  	console.log(this.props);
+  	var footerText;
+  	console.log("infoCardComponent", this.props);
+  	switch (this.props.cardData.type) {
+  		case 'Assets':
+  			footerText = "what i own";
+  			break;
+  		case 'Liabilities':
+  			footerText = "what i owe"
+  			break;
+  		case 'Income':
+  			footerText = "what i earn"
+  			break;
+  		case 'Expenses':
+  			footerText = "how much i spend"
+  			break;
+  		default:
+  			footerText = "my info cards"
+  			break;
+  	}
     return (	
-      <section className={'InfoCardComponent ' + this.props.cardData.type.toLowerCase()}>
+      <section className={"InfoCardComponent " + this.props.cardData.type.toLowerCase()}>
 		<InfoCardHeader 
 			infoCardTitle = {this.props.cardData}
 		/>
@@ -87,7 +112,7 @@ var InfoCardComponent = React.createClass({
 			netData = {this.props.cardData.balance}
 		/>
 		<InfoCardFooter 
-			infoCardFooter = {this.props.cardData.footerText}
+			infoCardFooter = {footerText}
 		/>
       </section>
       );
@@ -109,14 +134,14 @@ var InfoCards = React.createClass({
 	render: function(){
 		var cardDOM = [],
 			self = this;
-		debugger;
+		// debugger;
 		console.log('InfoCards');
 		console.log(self);
 		console.log(self.props);
 		console.log("self.props.cardData");
 		console.log(self.props.cardData);
 
-		debugger;
+		// debugger;
 		self.props.cardData.forEach(function(key, value){
 			console.log('key from infoCards', key);
 			console.log('value from infoCards', value);
