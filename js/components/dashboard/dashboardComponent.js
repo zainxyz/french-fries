@@ -1,9 +1,10 @@
-// dashboard component
 var DashboardComponent = React.createClass({
 	render: function(){
 		return (
 			<div className="DashboardComponent">
-      			<p>Whats up, DashboardComponent!</p>
+				<GoalChartComponent />
+				<GoalOverviewComponent />
+				<FinancialSnapshotComponent />
 				<InfoCards cardData={CARD_DATA} />
 			</div>
 		);

@@ -111,32 +111,32 @@ var InfoCards = React.createClass({
 })
 
 
-var CARD_DATA = [{
-	title: 'Assets',
-	tableValues: [
-	  {label: 'label 1', value: 'value 1'},
-	  {label: 'label 2', value: 'value 2'},
-	  {label: 'label 3', value: 'value 3'},
-	],
-	netValue : '$203,500.00',
-	footerText : 'What I Own'
-},{
-	title: 'Liabilities',
-	tableValues: [
-	  {label: 'CC', value: 'value 1'},
-	  {label: 'label 2', value: 'value 2'},
-	  {label: 'label 3', value: 'value 3'},
-	],
-	netValue : '$203,500.00',
-	footerText : 'What I Owe'
-}
-]
+// var CARD_DATA = [{
+// 	title: 'Assets',
+// 	tableValues: [
+// 	  {label: 'label 1', value: 'value 1'},
+// 	  {label: 'label 2', value: 'value 2'},
+// 	  {label: 'label 3', value: 'value 3'},
+// 	],
+// 	netValue : '$203,500.00',
+// 	footerText : 'What I Own'
+// },{
+// 	title: 'Liabilities',
+// 	tableValues: [
+// 	  {label: 'CC', value: 'value 1'},
+// 	  {label: 'label 2', value: 'value 2'},
+// 	  {label: 'label 3', value: 'value 3'},
+// 	],
+// 	netValue : '$203,500.00',
+// 	footerText : 'What I Owe'
+// }
+// ]
 
-var TABLE_VALUES = [
-  {label: 'label 1', value: 'value 1'},
-  {label: 'label 2', value: 'value 2'},
-  {label: 'label 3', value: 'value 3'},
-];
+// var TABLE_VALUES = [
+//   {label: 'label 1', value: 'value 1'},
+//   {label: 'label 2', value: 'value 2'},
+//   {label: 'label 3', value: 'value 3'},
+// ];
 
 
 // ReactDOM.render(
