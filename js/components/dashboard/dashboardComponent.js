@@ -1,9 +1,42 @@
 var DashboardComponent = React.createClass({
+	getAPIData: function(){
+		var bankToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIiOiIifQ.7UbgIJtfQcYA9ZCr63k-Zj1XXYknUAKD0T2ZiHPVkBk"
+		var base_url = 'https://bnpparibas-api.openbankproject.com/obp/v2.0.0';
+		var relative_url = '/my/banks/obp-bank-x-gh/accounts/asiAccount2/account';
+		var parsedData;
+		var auth = "DirectLogin token=\""+bankToken +"\"";
+
+
+		console.log("auth:" + auth);
+		$.ajax
+		({
+  			type: "GET",
+  			url: base_url + relative_url,
+  			dataType: 'json',
+  			async: true,
+  			headers: {
+    				"Authorization": auth
+  			},
+  			data: '',
+  			success: function (res){
+  				console.log(res);
+    				//alert('Thanks for your comment!');	
+  			}
+		});
+
+
+				
+	
+
+	},
+	componentDidMount: function(){
+		console.log("componentDidMount");
+		this.getAPIData();
+	},
 	render: function(){
 		return (
 			<div className="DashboardComponent">
 				<GoalChartComponent />
-				
 				<GoalOverviewComponent goalsData={GOALS_DATA} />
 				<ChartSampleComponent data={CHART_SAMPLE_DATA} />
 				<FinancialSnapshotComponent />
@@ -12,8 +45,6 @@ var DashboardComponent = React.createClass({
 		);
 	}
 });
-
-
 var CHART_SAMPLE_DATA = [15, 22, 32, 41]
 
 
