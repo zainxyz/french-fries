@@ -273,6 +273,53 @@ input, select {
   font-weight: normal;
   src: url("../muse/assets/fonts/icomoon/icomoon.eot?#iefix") format("embedded-opentype"), url("../muse/assets/fonts/icomoon/icomoon.woff2") format("woff2"), url("../muse/assets/fonts/icomoon/icomoon.woff") format("woff"), url("../muse/assets/fonts/icomoon/icomoon.ttf") format("truetype"), url("../muse/assets/fonts/icomoon/icomoon.svg#icomoon") format("svg");
 }
+.ico-cash-revenue:before {
+  content: "\e9b5";
+}
+
+.ico-credit-card:before {
+  content: "\e9ae";
+}
+
+.ico-student-loan:before {
+  content: "\e9e7";
+}
+
+.ico-home-down-payment:before {
+  content: "\e900";
+}
+
+.ico-retirement:before {
+  content: "\eae9";
+}
+
+.ico-vacation:before {
+  content: "\e924";
+}
+
+.ico-trash-can:before {
+  content: "\e909";
+}
+
+.ico-edit:before {
+  content: "\e97b";
+}
+
+.ico-copy:before {
+  content: "\e9ba";
+}
+
+[class^="ico-"], [class*=" ico-"] {
+  font-family: "icomoon";
+  font-size: inherit;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: none;
+  line-height: 1;
+  speak: none;
+}
+
 body {
   padding: 0;
   font: 400 1.6rem/1.2 "Source Sans Pro";
@@ -300,6 +347,92 @@ a:hover {
 }
 a:active {
   color: #3c9992;
+}
+
+table {
+  width: 100%;
+  display: block;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  border-spacing: 0;
+  border-collapse: collapse;
+  line-height: 1.25;
+}
+table tr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+table tr:focus {
+  outline: none;
+}
+table tr td, table tr th {
+  display: inline-block;
+  color: #1a1b1f;
+  width: 80%;
+  line-height: 1.5;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 0.75rem 0.5rem;
+  min-height: 4rem;
+}
+table tr td:focus, table tr th:focus {
+  outline: none;
+}
+table > thead {
+  display: block;
+  border-bottom: 1.5px solid #F3F2F4;
+}
+table > thead tr {
+  border-bottom: none;
+}
+table > thead tr th {
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+table > thead th, table > thead td {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  flex-direction: row;
+  flex-wrap: wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+  white-space: normal;
+}
+table > tbody {
+  display: block;
+}
+table > tbody > tr {
+  width: 100%;
+  cursor: default;
+  color: #1a1b1f;
+  -webkit-transition: background-color 0.15s ease-in-out;
+  -moz-transition: background-color 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out;
+}
+table > tbody > tr td {
+  font-size: 1.4rem;
+  border-bottom: 1.5px solid #F3F2F4;
+  font-weight: 300;
+}
+table > tbody > tr td.icon {
+  text-align: center;
+}
+table > tbody > tr td.icon i {
+  display: inline-block;
+  line-height: 1.5;
+  font-size: 1.4rem;
+}
+table > tbody > tr:hover {
+  cursor: default;
 }
 
 .app-container {
@@ -663,6 +796,121 @@ a:active {
   padding: 3px;
   margin: 1px;
   color: white;
+}
+
+.GoalOverviewTable {
+  padding: 2rem;
+  background: #fff;
+}
+.GoalOverviewTable td, .GoalOverviewTable th {
+  text-align: left;
+}
+.GoalOverviewTable td.icon, .GoalOverviewTable th.icon {
+  flex-basis: 100%;
+  max-width: 100%;
+  color: #43aba4;
+}
+@media screen and (min-width: 769px) {
+  .GoalOverviewTable td.icon, .GoalOverviewTable th.icon {
+    flex-basis: 6.95833%;
+    max-width: 6.95833%;
+  }
+}
+.GoalOverviewTable td.goal-name, .GoalOverviewTable th.goal-name {
+  flex-basis: 100%;
+  max-width: 100%;
+}
+@media screen and (min-width: 769px) {
+  .GoalOverviewTable td.goal-name, .GoalOverviewTable th.goal-name {
+    flex-basis: 23.875%;
+    max-width: 23.875%;
+  }
+}
+.GoalOverviewTable td.target-amount, .GoalOverviewTable th.target-amount {
+  flex-basis: 100%;
+  max-width: 100%;
+  text-align: right;
+  justify-content: flex-end;
+}
+@media screen and (min-width: 769px) {
+  .GoalOverviewTable td.target-amount, .GoalOverviewTable th.target-amount {
+    flex-basis: 23.875%;
+    max-width: 23.875%;
+  }
+}
+.GoalOverviewTable td.target-date, .GoalOverviewTable th.target-date {
+  flex-basis: 100%;
+  max-width: 100%;
+  text-align: right;
+  justify-content: flex-end;
+}
+@media screen and (min-width: 769px) {
+  .GoalOverviewTable td.target-date, .GoalOverviewTable th.target-date {
+    flex-basis: 23.875%;
+    max-width: 23.875%;
+  }
+}
+.GoalOverviewTable td.progress-to-goal, .GoalOverviewTable th.progress-to-goal {
+  flex-basis: 100%;
+  max-width: 100%;
+  text-align: right;
+  justify-content: flex-end;
+}
+@media screen and (min-width: 769px) {
+  .GoalOverviewTable td.progress-to-goal, .GoalOverviewTable th.progress-to-goal {
+    flex-basis: 23.875%;
+    max-width: 23.875%;
+  }
+}
+.GoalOverviewTable td.edit, .GoalOverviewTable th.edit {
+  flex-basis: 100%;
+  max-width: 100%;
+  text-align: center;
+}
+@media screen and (min-width: 769px) {
+  .GoalOverviewTable td.edit, .GoalOverviewTable th.edit {
+    flex-basis: 6.95833%;
+    max-width: 6.95833%;
+  }
+}
+.GoalOverviewTable td.delete, .GoalOverviewTable th.delete {
+  flex-basis: 100%;
+  max-width: 100%;
+  text-align: center;
+}
+@media screen and (min-width: 769px) {
+  .GoalOverviewTable td.delete, .GoalOverviewTable th.delete {
+    flex-basis: 6.95833%;
+    max-width: 6.95833%;
+  }
+}
+.GoalOverviewTable td.goal-name {
+  font-weight: 400;
+}
+
+.GoalOverviewTabs {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.GoalOverviewTabs li a {
+  padding: 1.5rem;
+  -webkit-transition: border-bottom-color 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  -moz-transition: border-bottom-color 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition: border-bottom-color 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  display: block;
+  color: #1a1b1f;
+  text-transform: capitalize;
+  border-bottom: .3rem solid transparent;
+}
+.GoalOverviewTabs li a:hover {
+  border-bottom-color: #43aba4;
+}
+.GoalOverviewTabs li.current a {
+  border-bottom-color: #43aba4;
 }
 
 /*# sourceMappingURL=default.css.map */

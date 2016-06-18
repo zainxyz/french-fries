@@ -1,0 +1,79 @@
+table {
+    width: 100%;
+    display: block;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    border-spacing: 0;
+    border-collapse: collapse;
+    line-height: 1.25;
+    tr {
+        &:focus {
+            outline: none;
+        }
+        @include grid-row( $wrap: nowrap);
+        td, th {
+            display: inline-block;
+            color: unmap($app-colors, brand, dark);
+            width: 80%;
+            line-height: 1.5;
+            box-sizing: border-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            vertical-align: middle;
+            padding: unmap($spacings, small) unmap($spacings, x-small);
+            min-height: 4rem;
+            &:first-of-type {
+                // padding-left: 0;
+            }
+            &:last-of-type {
+                // padding-right: 0;
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    > thead {
+        display: block;
+        border-bottom: unmap($border-widths, small) solid $fries-color-light;
+        tr {
+            border-bottom: none;
+            th {
+                font-size: unmap($font-sizes, regular);
+                font-weight: unmap($font-weights, light);
+            }
+        }
+        th, td {
+            @include grid-row($justify: flex-start, $align: baseline);
+            word-break: break-word;
+            word-wrap: break-word;
+            white-space: normal;
+        }
+    }
+    > tbody {
+        display: block;
+        > tr {
+            width: 100%;
+            cursor: default;
+            color: unmap($app-colors, brand, dark);
+            @include transition(background-color .15s ease-in-out);
+            td {
+                font-size: 1.4rem;
+                border-bottom: unmap($border-widths, small) solid $fries-color-light;
+                font-weight: unmap($font-weights, light);
+                &.icon {
+                    text-align: center;
+                    i {
+                        display: inline-block;
+                        line-height: 1.5;
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+            &:hover {
+                cursor: default;
+            }
+        }
+    }
+}
