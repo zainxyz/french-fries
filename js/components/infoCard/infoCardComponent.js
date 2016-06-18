@@ -96,10 +96,11 @@ var InfoCardComponent = React.createClass({
 var InfoCards = React.createClass({
 	render: function(){
 		var cardDOM = [];
+		console.log('InfoCards');
 		console.log(this);
 
-		this.props.cardData.forEach(function(key){
-			cardDOM.push(<InfoCardComponent cardData={key} key={key}/>);
+		this.props.cardData.forEach(function(key, value){
+			cardDOM.push(<InfoCardComponent cardData={key} key={value} />);
 			
 		});
 		console.log("cardDom",cardDOM);
@@ -138,6 +139,6 @@ var TABLE_VALUES = [
 ];
 
 
-ReactDOM.render(
-	<InfoCards cardData={CARD_DATA}/>, document.getElementById('test')
-);
+// ReactDOM.render(
+// 	<InfoCards cardData={CARD_DATA}/>, document.getElementById('test')
+// );
