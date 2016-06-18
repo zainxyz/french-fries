@@ -1,37 +1,50 @@
 var DashboardComponent = React.createClass({
-	getAPIData: function(){
+	getAPIData: function(api, data, verb){
+
 		var bankToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIiOiIifQ.7UbgIJtfQcYA9ZCr63k-Zj1XXYknUAKD0T2ZiHPVkBk"
-		var base_url = 'https://bnpparibas-api.openbankproject.com/obp/v2.0.0';
-		var relative_url = '/my/banks/obp-bank-x-gh/accounts/asiAccount2/account';
+		var base_url = 'https://bnpparibas-api.openbankproject.com/obp/v2.0.0//my/banks/obp-bank-x-gh';
 		var parsedData;
 		var auth = "DirectLogin token=\""+bankToken +"\"";
 
 
 		console.log("auth:" + auth);
-		$.ajax
+
+		var thisRequest = $.Deferred();
+
+		var promise = $.ajax
 		({
-  			type: "GET",
-  			url: base_url + relative_url,
+  			type: verb,
+  			url: base_url + api,
   			dataType: 'json',
   			async: true,
   			headers: {
     				"Authorization": auth
   			},
-  			data: '',
-  			success: function (res){
-  				console.log(res);
-    				//alert('Thanks for your comment!');	
-  			}
+  			data: data,
+  			timeout : 75000
 		});
 
+		promise.done( function(data, textStatus, jqXHR) {
+			thisRequest.resolve(data);
+		});
 
-				
-	
+		promise.fail(function(response, status, error) {
+			thisRequest.reject(response,status,error);
+		});
+
+		return thisRequest;
 
 	},
+
 	componentDidMount: function(){
 		console.log("componentDidMount");
-		this.getAPIData();
+		var promise = this.getAPIData('/accounts/asiAccount2/account','','GET');
+		$.when(promise).done( function(data) {
+			console.log(data);	
+		}).fail(function(response) { 
+			console.log(response);
+        });
+
 	},
 	render: function(){
 		return (
