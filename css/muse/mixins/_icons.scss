@@ -8,7 +8,7 @@
 @mixin gen-icons($icons) {
 	@each $key, $val in $icons {
 		.ico-#{$key}:before {
-			content: unquote("\"") + unquote(str-insert(#{$val},"\\",1)) + unquote("\"");
+			content: unquote("\"") + unquote(str-insert("#{$val}","\\",1)) + unquote("\"");
 		}
 	}
 }
