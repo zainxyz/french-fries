@@ -1,13 +1,19 @@
 .InfoCards {
+	margin: unmap($spacings, xx-large) 0;
     @include grid-row($align: flex-start, $wrap: wrap);
     .InfoCardComponent {
         position: relative;
+        display: flex;
+        flex-direction: column;
         @include grid-columns($sizes: (12, 6));
         margin-bottom: unmap($spacings, xx-large);
     }
 }
 
 .InfoCardComponent {
+	> main {
+		flex-grow: 2;
+	}
     > header, > main, > footer {
         @include gen-box-model($padding: unmap($spacings, xx-large));
         font-size: 1.4rem;
@@ -48,6 +54,7 @@
 
 .InfoCardComponent {
     > footer {
+    	color: #fff;
         padding: 2.3rem 1.7rem;
         background: $fries-color-light;
         text-transform: capitalize;
@@ -57,34 +64,34 @@
 .InfoCardComponent {
     &.assets {
     	> .InfoCardNetWorth {
-    		border-color: red;
+    		border-color: #43aba4;
     	}
         > footer {
-            background: red;
+            background: #43aba4;
         }
     }
     &.liabilities {
     	> .InfoCardNetWorth {
-    		border-color: blue;
+    		border-color: #df2664;
     	}
         > footer {
-            background: blue;
+            background: #df2664;
         }
     }
     &.income {
     	> .InfoCardNetWorth {
-    		border-color: green;
+    		border-color: #c43029;
     	}
         > footer {
-            background: green;
+            background: #c43029;
         }
     }
     &.expenses {
     	> .InfoCardNetWorth {
-    		border-color: yellow;
+    		border-color: #98195f;
     	}
         > footer {
-            background: yellow;
+            background: #98195f;
         }
     }
 }

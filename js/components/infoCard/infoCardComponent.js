@@ -91,6 +91,16 @@ var InfoCardComponent = React.createClass({
 
 
 var InfoCards = React.createClass({
+	componentDidMount: function() {
+		// Set all cards to same height :)
+		var singleCard = $('.InfoCards > .InfoCardComponent');
+		singleCard.height("auto");
+			var maxHeight = Math.max.apply(null, singleCard.map(function() {
+    		return $(this).height();
+		}).get());
+		console.log('maxHeight of all questions : ' + maxHeight);
+		singleCard.height(maxHeight);
+	},
 	render: function(){
 		var cardDOM = [];
 		
@@ -141,3 +151,13 @@ var InfoCards = React.createClass({
 // ReactDOM.render(
 // 	<InfoCards cardData={CARD_DATA}/>, document.getElementById('test')
 // );
+
+// var singleCard = $('.InfoCards > .InfoCardComponent');
+// singleCard.height("auto");
+// var maxHeight = Math.max.apply(null, singleCard.map(function() {
+//     return $(this).height();
+// }).get());
+
+// console.log('maxHeight of all questions : ' + maxHeight);
+
+// singleCard.height(maxHeight);

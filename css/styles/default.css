@@ -306,7 +306,7 @@ body {
 }
 .app-container #app_content {
   padding: 3rem;
-  background: #e3e4e5;
+  background: #F3F2F4;
 }
 
 .app-nav {
@@ -449,7 +449,7 @@ body {
 
 .app-notifications {
   padding: 1.7rem;
-  background: #e3e4e5;
+  background: #F3F2F4;
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -480,6 +480,7 @@ body {
 }
 
 .InfoCards {
+  margin: 2rem 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -489,6 +490,8 @@ body {
 }
 .InfoCards .InfoCardComponent {
   position: relative;
+  display: flex;
+  flex-direction: column;
   flex-basis: 100%;
   max-width: 100%;
   margin-bottom: 2rem;
@@ -500,6 +503,9 @@ body {
   }
 }
 
+.InfoCardComponent > main {
+  flex-grow: 2;
+}
 .InfoCardComponent > header, .InfoCardComponent > main, .InfoCardComponent > footer {
   padding: 2rem;
   font-size: 1.4rem;
@@ -548,34 +554,35 @@ body {
 }
 
 .InfoCardComponent > footer {
+  color: #fff;
   padding: 2.3rem 1.7rem;
-  background: #e3e4e5;
+  background: #F3F2F4;
   text-transform: capitalize;
 }
 
 .InfoCardComponent.assets > .InfoCardNetWorth {
-  border-color: red;
+  border-color: #43aba4;
 }
 .InfoCardComponent.assets > footer {
-  background: red;
+  background: #43aba4;
 }
 .InfoCardComponent.liabilities > .InfoCardNetWorth {
-  border-color: blue;
+  border-color: #df2664;
 }
 .InfoCardComponent.liabilities > footer {
-  background: blue;
+  background: #df2664;
 }
 .InfoCardComponent.income > .InfoCardNetWorth {
-  border-color: green;
+  border-color: #c43029;
 }
 .InfoCardComponent.income > footer {
-  background: green;
+  background: #c43029;
 }
 .InfoCardComponent.expenses > .InfoCardNetWorth {
-  border-color: yellow;
+  border-color: #98195f;
 }
 .InfoCardComponent.expenses > footer {
-  background: yellow;
+  background: #98195f;
 }
 
 .chart div {
