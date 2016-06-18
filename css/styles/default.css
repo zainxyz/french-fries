@@ -509,7 +509,45 @@ a:active {
 }
 
 .financial-snapshot {
-  background: red;
+  height: 100rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: no-wrap;
+}
+.financial-snapshot > div {
+  flex-basis: 100%;
+  max-width: 100%;
+  position: absolute;
+}
+@media screen and (min-width: 769px) {
+  .financial-snapshot > div {
+    flex-basis: 49.25%;
+    max-width: 49.25%;
+  }
+}
+.financial-snapshot > div.assets-liabilities > div {
+  border-top: .1rem dashed;
+  width: 40rem;
+}
+.financial-snapshot > div.assets-liabilities > div.assets {
+  border-left: 10rem solid;
+  border-color: red;
+}
+.financial-snapshot > div.assets-liabilities > div.liabilities {
+  border-right: 10rem solid;
+  border-color: purple;
+}
+.financial-snapshot > div.cash-expenses {
+  display: none;
+}
+.financial-snapshot > div.cash-expenses .cash {
+  background: blue;
+}
+.financial-snapshot > div.cash-expenses .expenses {
+  background: pink;
 }
 
 .InfoCards {

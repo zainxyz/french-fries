@@ -1,3 +1,31 @@
-.financial-snapshot{
-	background: red;
+.financial-snapshot {
+	height: 100rem;
+    @include grid-row($align: flex-start, $wrap: no-wrap);
+    > div {
+        @include grid-columns($sizes: (12, 6));
+        position: absolute;
+        &.assets-liabilities {
+        	> div {
+        		border-top: .1rem dashed;
+        		width: 40rem;
+	            &.assets {
+	                border-left: 10rem solid;
+	                border-color: red;
+	            }
+	            &.liabilities {
+	                border-right: 10rem solid;
+	                border-color: purple;
+	            }
+            }
+        }
+        &.cash-expenses {
+        	display: none;
+            & .cash {
+                background: blue;
+            }
+            & .expenses {
+                background: pink;
+            }
+        }
+    }
 }
