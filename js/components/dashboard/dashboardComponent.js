@@ -52,7 +52,7 @@ var DashboardComponent = React.createClass({
 			// console.log(accounts);
 			// accounts = data;
 			var typeInc = 0;
-			var types = ['Assets','Liabilities','Income','Expenses'];
+			var types = ['Assets','Liabilities','Expenses','Income'];
 
 			$.each(data,function(index,value){
 
