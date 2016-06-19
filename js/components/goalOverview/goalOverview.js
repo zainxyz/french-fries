@@ -1,6 +1,6 @@
 var GoalOverviewComponent = React.createClass({
 	render: function(){
-		console.log("GoalOverviewComponent",this.props);
+		// console.log("GoalOverviewComponent",this.props);
 		return (
 			<section>
 				<GoalOverViewTabs />
@@ -25,7 +25,7 @@ var GoalOverViewTabs = React.createClass({
 
 var GoalOverViewTable = React.createClass({
 	render: function(){
-		console.log("GoalOverViewTable",this.props);
+		// console.log("GoalOverViewTable",this.props);
 		return (
 			<section className="GoalOverViewTable">
 				<table>
@@ -60,11 +60,11 @@ var GoalOverviewTableHead = React.createClass({
 
 var GoalOverviewTableBody = React.createClass({
 	render: function(){
-		console.log("GoalOverviewTableBody", this.props);
+		// console.log("GoalOverviewTableBody", this.props);
 		var rows = [];
 		this.props.goalsData.forEach(function(value, key){
-			console.log("key", key);
-			console.log("value", value);
+			// console.log("key", key);
+			// console.log("value", value);
 			rows.push(<GoalOverviewRow goalData={value} key={key}/>);
 		});
 		return (
@@ -77,7 +77,7 @@ var GoalOverviewTableBody = React.createClass({
 
 var GoalOverviewRow = React.createClass({
 	render: function(){
-		console.log("GoalOverviewRow", this.props.goalData);
+		// console.log("GoalOverviewRow", this.props.goalData);
 		var targetAmount = numeral(this.props.goalData.targetAmount).format('$0,0.00');
 		return (
 			<tr className="GoalOverviewRow">

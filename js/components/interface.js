@@ -12,7 +12,30 @@
 */
 
 var accountsData = [];
+
 var dataloaded = $.Deferred();
+
+var CARD_DATA = [{
+    title: 'Assets',
+    tableValues: [],
+    netValue: 0,
+    footerText: 'what i own'
+}, {
+    title: 'Liabilities',
+    tableValues: [],
+    netValue: 0,
+    footerText: 'what i owe'
+},{
+    title: 'Income',
+    tableValues: [],
+    netValue: 0,
+    footerText: 'what i earn'
+}, {
+    title: 'Expenses',
+    tableValues: [],
+    netValue: 0,
+    footerText: 'how much i spend'
+}];
 
 
 function getAPIData(api, data, verb){
@@ -63,25 +86,28 @@ function loadData () {
     var self = this;
 
 	$.when(promise).done( function(data) {
-		// console.log(data);	
+		console.log('promise 1 data');	
+		console.log(data);	
 		// accounts.push(data);
 		// console.log(accounts);
 		// accounts = data;
 		var typeInc = 0;
-		var types = ['Assets','Liabilities','Income','Expenses'];
+		var numOfAccts = data.length;
+		console.log('numOfAccts', numOfAccts);
+
+		var types = ['Assets','Liabilities','Income','Expenses','Liabilities','Assets','Liabilities','Income','Expenses','Liabilities','Assets','Liabilities','Income','Expenses','Liabilities'];
+		
 		$.each(data,function(index,value){
 			var promise2 = getAPIData('/accounts/' +  value.id + '/account','','GET');
 			$.when(promise2).done( function(data) {
 				// debugger;
-
-               
-
-
+				// console.log('index', index);
+				// console.log('data', data);
+				// CARD_DATA[index].title = "Hello World";
 
                 typeInc++;
-
 				if(typeInc <= 4){
-                	data.type = types[typeInc - 1];
+    			data.type = types[typeInc - 1];
 
 					accountsData.push(data);
 				}
@@ -96,13 +122,16 @@ function loadData () {
 			}).fail(function(response) { 
 				console.log(response);
 				ldPromise.reject();
+
     		});
 			// accounts.push()
+				// console.log('CARD_DATA: ', CARD_DATA);
 		});
 
 	}).fail(function(response) { 
 		console.log(response);
 		ldPromise.reject();
+
     });
 	
 	return ldPromise;
@@ -170,6 +199,31 @@ var router = new Router();
  
 function main() {
 	$.when(loadData()).done( function() {
+		
+		var x = 0, y = 0, currIndex = 0;
+		var tableVals = [];
+
+		$.each(accountsData, function(index, curr) {
+			
+			y = CARD_DATA[x].tableValues.length;
+
+			CARD_DATA[x].tableValues.push({
+				'label': curr.id,
+				'value': curr.balance.amount
+			});
+
+			CARD_DATA[x].netValue += curr.balance.amount;
+			// CARD_DATA[x].tableValues[currIndex].label = curr.id;
+			// CARD_DATA[x].tableValues[currIndex].value = curr.balance.amount;
+			
+			++x;
+			currIndex = x % 4;
+		
+		});
+
+		console.log('CARD_DATA', CARD_DATA);
+
+
 	 ReactDOM.render(
  		<InterfaceComponent router={router} />,
  		document.getElementById('app_content')
