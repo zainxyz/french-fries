@@ -266,7 +266,7 @@ function makeChart(data, markers) {
     addAxesAndLegend(svg, xAxis, yAxis, margin, chartWidth, chartHeight);
     drawPaths(svg, data, x, y);
     startTransitions(svg, chartWidth, chartHeight, rectClip, markers, x);
-    debugger;
+    // debugger;
 }
 
 var parseDate = d3.time.format('%Y-%m-%d').parse;
