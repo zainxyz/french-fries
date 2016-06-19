@@ -95,11 +95,11 @@ var DashboardComponent = React.createClass({
 	render: function(){
 		return (
 			<div className="DashboardComponent">
+				<InfoCards cardData={accountsData} /> 
 				<GoalChartComponent />
 				<GoalOverviewComponent goalsData={GOALS_DATA} />
 				<ChartSampleComponent data={CHART_SAMPLE_DATA} />
 				<FinancialSnapshotComponent />
-				<InfoCards cardData={accountsData} /> 
 			</div>
 		);
 	}
